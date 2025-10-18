@@ -1,0 +1,273 @@
+/* Benefits Section */
+.benefits {
+    background: var(--gray-light);
+    padding: 80px 0;
+}
+
+.benefits-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    min-height: 500px;
+}
+
+.benefits-left {
+    padding-right: 20px;
+}
+
+.benefits-left .section-title {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+}
+
+.owner-intro {
+    max-width: 100%;
+}
+
+.owner-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.owner-text strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.owner-name {
+    color: #7dd87d;
+    font-weight: 700;
+    font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.verified-badge {
+    background: #7dd87d;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(125, 216, 125, 0.3);
+}
+
+.trust-points-overlay {
+    position: relative;
+    margin-top: -100px;
+    z-index: 15;
+    padding: 0 20px;
+}
+
+.trust-points {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trust-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 24px;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(159, 220, 124, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.trust-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+}
+
+.trust-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(159, 220, 124, 0.05) 0%, rgba(159, 220, 124, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 24px;
+}
+
+.trust-card:hover::before {
+    opacity: 1;
+}
+
+.trust-card-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--primary);
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(159, 220, 124, 0.15) 0%, rgba(159, 220, 124, 0.08) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(159, 220, 124, 0.2);
+}
+
+.trust-card:hover .trust-card-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(159, 220, 124, 0.25) 0%, rgba(159, 220, 124, 0.15) 100%);
+    box-shadow: 0 6px 20px rgba(159, 220, 124, 0.3);
+}
+
+.trust-card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.trust-card-text {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.trust-card:hover .trust-card-text {
+    color: #2c3e50;
+    transform: translateY(-2px);
+}
+
+.benefits-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.owner-photo {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.owner-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.owner-image:hover {
+    /* Убран эффект увеличения */
+}
+
+.owner-video {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.owner-video:hover {
+    /* Убран эффект увеличения */
+}
+
+.owner-photo {
+    position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .benefits {
+        padding: 60px 0 40px 0;
+    }
+    
+    .benefits-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .benefits-left {
+        padding-right: 0;
+        order: 2;
+        margin-bottom: 10px;
+    }
+    
+    .benefits-right {
+        order: 1;
+    }
+    
+    .benefits-left .section-title {
+        text-align: center;
+        font-size: 1.6rem;
+    }
+    
+    .trust-points-overlay {
+        margin-top: 5px;
+        padding: 0 15px;
+    }
+    
+    .trust-points {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .trust-card {
+        padding: 15px 12px;
+    }
+    
+    .trust-card-text {
+        font-size: 0.75rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefits {
+        padding: 50px 0 30px 0;
+    }
+    
+    .benefits-left .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .trust-card-text {
+        font-size: 0.7rem;
+    }
+    
+    .trust-card {
+        padding: 12px 8px;
+    }
+    
+    .owner-text {
+        font-size: 0.9rem;
+    }
+}

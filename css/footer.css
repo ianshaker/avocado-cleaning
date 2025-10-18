@@ -1,0 +1,153 @@
+/* Footer */
+.footer {
+    background: transparent;
+    color: var(--white);
+    padding: 0 0 30px;
+    margin-top: 80px;
+}
+
+.footer .container {
+    background: var(--primary-dark);
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.15);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.footer-column h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-links,
+.footer-contacts {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-contacts li {
+    margin-bottom: 12px;
+}
+
+.footer-links a,
+.footer-contacts a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contacts a:hover {
+    color: var(--accent-yellow);
+}
+
+.social-links {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-links:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+    padding: 8px;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+}
+
+.social-links img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    margin-top: 10px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Footer Media Queries */
+@media (max-width: 1024px) {
+    .footer {
+        margin-top: 60px;
+    }
+
+    .footer .container {
+        padding: 40px 30px;
+        border-radius: 20px;
+    }
+
+    .footer-content {
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .footer-bottom {
+        padding-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        margin-top: 50px;
+        padding: 0 15px 20px 15px;
+    }
+
+    .footer .container {
+        padding: 35px 20px;
+        border-radius: 15px;
+    }
+
+    .footer-content {
+        margin-bottom: 25px;
+    }
+
+    .footer-bottom {
+        padding-top: 20px;
+    }
+}

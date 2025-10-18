@@ -1,0 +1,801 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--primary-light) 100%);
+    padding: 0 0 80px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0 0 30px 30px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 50%, #7bc95f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 120px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    letter-spacing: 3px;
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+    animation: fadeInLeft 0.8s ease-out 0.1s backwards;
+}
+
+
+
+/* City Selector */
+.city-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 500px; /* Единое ограничение ширины как у белого контейнера */
+    animation: fadeInLeft 0.8s ease-out 0.2s backwards;
+}
+
+/* Time selection styles moved to css/time-selection.css */
+
+/* Selector Tiles - Base */
+.selector-tile {
+    flex: 1;
+    padding: 10px 16px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.9));
+    border: 2px solid rgba(159, 220, 124, 0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26, 94, 26, 0.08);
+}
+
+.selector-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(159, 220, 124, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.selector-tile:hover::before {
+    left: 100%;
+}
+
+.selector-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 94, 26, 0.18);
+}
+
+/* City Tiles - Объёмные многослойные кнопки с белым основным цветом и зелёными оттенками */
+.city-tile {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border: none;
+    color: #2d5a3d;
+    border-radius: 18px;
+    padding: 12px 20px;
+    position: relative;
+    transform: translateY(0px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    /* Многослойный объёмный эффект с зелёными оттенками */
+    box-shadow: 
+        /* Основная тень кнопки (зелёная) */
+        0 6px 0 #4a7c59,
+        /* Глубокая тень для объёма */
+        0 8px 15px rgba(74, 124, 89, 0.3),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        /* Внешнее свечение */
+        0 0 20px rgba(74, 124, 89, 0.2);
+}
+
+.city-tile:hover {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    transform: translateY(-2px);
+    /* Увеличенный объёмный эффект при наведении */
+    box-shadow: 
+        /* Основная тень кнопки (увеличена) */
+        0 8px 0 #4a7c59,
+        /* Глубокая тень для объёма */
+        0 12px 25px rgba(74, 124, 89, 0.4),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        /* Внешнее свечение (усилено) */
+        0 0 30px rgba(74, 124, 89, 0.3);
+}
+
+.city-tile.active {
+    background: linear-gradient(145deg, #ffffff, #f0f8f0);
+    color: #2d5a3d;
+    font-weight: 600;
+    /* Особый объёмный эффект для активной кнопки */
+    box-shadow: 
+        /* Основная тень кнопки (тёмно-зелёная) */
+        0 6px 0 #2d5a3d,
+        /* Глубокая тень для объёма */
+        0 8px 20px rgba(45, 90, 61, 0.4),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        /* Внешнее свечение (зелёное) */
+        0 0 25px rgba(74, 124, 89, 0.4);
+}
+
+.city-tile:active {
+    transform: translateY(2px);
+    /* Эффект нажатия - уменьшение объёма */
+    box-shadow: 
+        /* Уменьшенная тень при нажатии */
+        0 2px 0 #4a7c59,
+        /* Минимальная глубокая тень */
+        0 4px 8px rgba(74, 124, 89, 0.2),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        /* Уменьшенное свечение */
+        0 0 10px rgba(74, 124, 89, 0.15);
+}
+
+/* Пульсирующий зеленый кружок для активного города */
+.city-tile.active::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #4a7c59;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(74, 124, 89, 0.7);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1);
+        opacity: 0.8;
+        box-shadow: 0 0 0 8px rgba(74, 124, 89, 0.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(74, 124, 89, 0);
+    }
+}
+
+@keyframes pulse-yellow {
+    0% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(244, 196, 48, 0.7);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1);
+        opacity: 0.8;
+        box-shadow: 0 0 0 8px rgba(244, 196, 48, 0.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(244, 196, 48, 0);
+    }
+}
+
+.location-icon {
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.tile-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+/* Object Tiles - Объёмные многослойные кнопки с новыми цветами */
+.object-tile {
+    background: linear-gradient(145deg, #ebf172, #b1d843);
+    border: none;
+    color: #2d5a3d;
+    border-radius: 18px;
+    padding: 12px 20px;
+    position: relative;
+    transform: translateY(0px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    /* Многослойный объёмный эффект */
+    box-shadow: 
+        /* Основная тень кнопки */
+        0 6px 0 #9ac23c,
+        /* Глубокая тень для объёма */
+        0 8px 15px rgba(154, 194, 60, 0.4),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 215, 0.6),
+        /* Внешнее свечение */
+        0 0 20px rgba(177, 216, 67, 0.3);
+}
+
+.object-tile:hover {
+    background: linear-gradient(145deg, #ebf172, #b1d843);
+    transform: translateY(-2px);
+    /* Увеличенный объёмный эффект при наведении */
+    box-shadow: 
+        /* Основная тень кнопки (увеличена) */
+        0 8px 0 #9ac23c,
+        /* Глубокая тень для объёма */
+        0 12px 25px rgba(154, 194, 60, 0.5),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 215, 0.8),
+        /* Внешнее свечение (усилено) */
+        0 0 30px rgba(177, 216, 67, 0.5);
+}
+
+.object-tile:active {
+    transform: translateY(2px);
+    /* Эффект нажатия - уменьшение объёма */
+    box-shadow: 
+        /* Уменьшенная тень при нажатии */
+        0 2px 0 #9ac23c,
+        /* Минимальная глубокая тень */
+        0 4px 8px rgba(154, 194, 60, 0.3),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 215, 0.4),
+        /* Уменьшенное свечение */
+        0 0 10px rgba(177, 216, 67, 0.2);
+}
+
+.object-tile .tile-icon {
+    color: #2d5a3d;
+}
+
+.object-tile.active {
+    background: linear-gradient(135deg, #9fdc7c 0%, #2d6e2d 100%);
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2),
+                0 4px 15px rgba(159, 220, 124, 0.4);
+    color: white;
+    font-weight: 700;
+}
+
+.object-tile.active .tile-icon {
+    color: white;
+}
+
+.object-tile.active::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #f4c430;
+    border-radius: 50%;
+    animation: pulse-yellow 2s infinite;
+}
+
+/* Service Tiles - Объёмные многослойные кнопки с новыми цветами */
+.service-tile {
+    background: linear-gradient(145deg, #ffffd7, #ebf172);
+    border: none;
+    color: #2d5a3d;
+    border-radius: 18px;
+    padding: 12px 20px;
+    position: relative;
+    transform: translateY(0px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    /* Многослойный объёмный эффект */
+    box-shadow: 
+        /* Основная тень кнопки */
+        0 6px 0 #b1d843,
+        /* Глубокая тень для объёма */
+        0 8px 15px rgba(177, 216, 67, 0.4),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        /* Внешнее свечение */
+        0 0 20px rgba(235, 241, 114, 0.3);
+}
+
+.service-tile:hover {
+    background: linear-gradient(145deg, #ffffd7, #ebf172);
+    transform: translateY(-2px);
+    /* Увеличенный объёмный эффект при наведении */
+    box-shadow: 
+        /* Основная тень кнопки (увеличена) */
+        0 8px 0 #b1d843,
+        /* Глубокая тень для объёма */
+        0 12px 25px rgba(177, 216, 67, 0.5),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        /* Внешнее свечение (усилено) */
+        0 0 30px rgba(235, 241, 114, 0.5);
+}
+
+.service-tile:active {
+    transform: translateY(2px);
+    /* Эффект нажатия - уменьшение объёма */
+    box-shadow: 
+        /* Уменьшенная тень при нажатии */
+        0 2px 0 #b1d843,
+        /* Минимальная глубокая тень */
+        0 4px 8px rgba(177, 216, 67, 0.3),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        /* Уменьшенное свечение */
+        0 0 10px rgba(235, 241, 114, 0.2);
+}
+
+.service-tile .tile-icon {
+    color: #2d5a3d;
+}
+
+.service-tile.active {
+    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2),
+                0 4px 15px rgba(255, 196, 0, 0.4);
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.service-tile.active .tile-icon {
+    color: var(--primary-dark);
+}
+
+.service-tile.active::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #4a7c59;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+    z-index: 1;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.floating-logo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 100px;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(26, 94, 26, 0.3));
+}
+
+
+
+/* Floating Icons */
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-icon {
+    position: absolute;
+    bottom: -150px;
+    opacity: 0.18;
+    animation: riseIcon 20s infinite ease-in;
+}
+
+.icon-1 {
+    width: 70px;
+    left: 8%;
+    animation-duration: 18s;
+    animation-delay: 0s;
+}
+
+.icon-2 {
+    width: 60px;
+    left: 22%;
+    animation-duration: 22s;
+    animation-delay: 0.5s;
+}
+
+.icon-3 {
+    width: 80px;
+    left: 38%;
+    animation-duration: 20s;
+    animation-delay: 0.3s;
+}
+
+.icon-4 {
+    width: 55px;
+    left: 52%;
+    animation-duration: 19s;
+    animation-delay: 0.8s;
+}
+
+.icon-5 {
+    width: 65px;
+    left: 68%;
+    animation-duration: 21s;
+    animation-delay: 0.2s;
+}
+
+.icon-6 {
+    width: 75px;
+    left: 80%;
+    animation-duration: 23s;
+    animation-delay: 1s;
+}
+
+.icon-7 {
+    width: 70px;
+    left: 15%;
+    animation-duration: 24s;
+    animation-delay: 1.2s;
+}
+
+.icon-8 {
+    width: 58px;
+    left: 45%;
+    animation-duration: 19s;
+    animation-delay: 0.6s;
+}
+
+.icon-9 {
+    width: 68px;
+    left: 62%;
+    animation-duration: 22s;
+    animation-delay: 1.5s;
+}
+
+.icon-10 {
+    width: 72px;
+    left: 90%;
+    animation-duration: 20s;
+    animation-delay: 0.9s;
+}
+
+@keyframes riseIcon {
+    0% {
+        bottom: -150px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 0.18;
+    }
+    90% {
+        opacity: 0.18;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(50px) rotate(180deg);
+    }
+}
+
+/* Bubbles Animation */
+.bubbles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: rise 15s infinite ease-in;
+}
+
+.bubble:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    left: 10%;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    left: 20%;
+    animation-duration: 14s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    width: 30px;
+    height: 30px;
+    left: 35%;
+    animation-duration: 16s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(4) {
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+.bubble:nth-child(5) {
+    width: 45px;
+    height: 45px;
+    left: 65%;
+    animation-duration: 15s;
+    animation-delay: 0.5s;
+}
+
+.bubble:nth-child(6) {
+    width: 35px;
+    height: 35px;
+    left: 75%;
+    animation-duration: 17s;
+    animation-delay: 2.5s;
+}
+
+.bubble:nth-child(7) {
+    width: 55px;
+    height: 55px;
+    left: 85%;
+    animation-duration: 14s;
+    animation-delay: 1.5s;
+}
+
+.bubble:nth-child(8) {
+    width: 40px;
+    height: 40px;
+    left: 90%;
+    animation-duration: 16s;
+    animation-delay: 3.5s;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-2deg);
+    }
+    75% {
+        transform: translateY(-15px) rotate(1deg);
+    }
+}
+
+@keyframes rise {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(100px) rotate(360deg);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 2.5rem;
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 0;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 4.2rem;
+        letter-spacing: 1.2px;
+        margin-top: 0;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .city-selector,
+    .object-types,
+    .additional-services {
+        flex-wrap: wrap;
+    }
+
+    /* Убираем ограничение ширины для планшетов - пусть плитки растягиваются равномерно */
+    .object-types .selector-tile,
+    .additional-services .selector-tile {
+        flex: 1;
+        min-width: 0; /* Позволяет flex-элементам сжиматься */
+    }
+
+    .floating-logo {
+        max-width: 280px;
+        margin-top: 40px;
+    }
+
+    .hero-image {
+        order: -1;
+        margin-top: 60px;
+    }
+
+    .floating-icon {
+        opacity: 0.15;
+    }
+
+    .icon-1, .icon-5, .icon-9 {
+        width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 0 50px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .hero-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+        letter-spacing: 0.8px;
+        margin-top: 0;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .city-selector {
+        flex-direction: row;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .object-types,
+    .additional-services {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .selector-tile {
+        font-size: 0.75rem;
+        padding: 10px 12px;
+    }
+
+    .hero-phone-input,
+    .hero-cta-button {
+        font-size: 0.95rem;
+        padding: 13px 20px;
+        width: 100%;
+    }
+    
+    .hero-cta-button {
+        background: linear-gradient(135deg, var(--primary-yellow), #e6b800);
+        color: var(--primary-dark);
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 700;
+        box-shadow: 0 6px 20px rgba(255, 196, 0, 0.35);
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .floating-logo {
+        max-width: 220px;
+        margin-top: 30px;
+    }
+}

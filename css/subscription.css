@@ -1,0 +1,644 @@
+/* Subscription Section */
+.subscription {
+    padding: 100px 0;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.subscription-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 30px;
+    padding: 60px;
+    margin: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.subscription-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e0e0e0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.subscription-left,
+.subscription-right {
+    position: relative;
+    z-index: 1;
+}
+
+.subscription-header {
+    margin-bottom: 40px;
+}
+
+.subscription-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #4CAF50, #45A049);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+
+.subscription-description h3 {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.subscription-description p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.subscription-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.benefit-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.benefit-icon svg path {
+    fill: white !important;
+}
+
+.benefit-text h4 {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.benefit-text p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.subscription-plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.plan-option {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.plan-option:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+}
+
+.plan-option.popular {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    transform: scale(1.05);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6b6b;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.plan-option h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: inherit;
+}
+
+.plan-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.plan-option.popular .plan-price {
+    color: white;
+}
+
+.plan-option p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Cashback Description */
+.cashback-description {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.cashback-description p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Cashback Card */
+.cashback-card {
+    width: 400px;
+    height: 250px;
+    background: linear-gradient(135deg, #8BC34A 0%, #689F38 50%, #FFC107 100%);
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(139, 195, 74, 0.3);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.cashback-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: card-shine 3s infinite;
+}
+
+@keyframes card-shine {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.card-logo span:first-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+}
+
+.card-type {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.card-chip {
+    width: 35px;
+    height: 25px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border-radius: 5px;
+    position: relative;
+}
+
+.chip {
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+    );
+    border-radius: 5px;
+}
+
+.card-number {
+    display: flex;
+    gap: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.name, .date {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffd700;
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cashback-rate {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffd700;
+}
+
+.subscription-cta {
+    text-align: left;
+}
+
+.subscription-button {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    color: #2d5a3d;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 15px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    transform: translateY(0px);
+    /* Многослойный объёмный эффект с зелёными оттенками */
+    box-shadow: 
+        /* Основная тень кнопки (зелёная) */
+        0 6px 0 #4a7c59,
+        /* Глубокая тень для объёма */
+        0 8px 15px rgba(74, 124, 89, 0.3),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        /* Внешнее свечение */
+        0 0 20px rgba(74, 124, 89, 0.2);
+}
+
+.subscription-button:hover {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    transform: translateY(-2px);
+    /* Увеличенный объёмный эффект при наведении */
+    box-shadow: 
+        /* Основная тень кнопки (увеличена) */
+        0 8px 0 #4a7c59,
+        /* Глубокая тень для объёма */
+        0 12px 25px rgba(74, 124, 89, 0.4),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        /* Внешнее свечение (усилено) */
+        0 0 30px rgba(74, 124, 89, 0.3);
+}
+
+.subscription-button:active {
+    transform: translateY(2px);
+    /* Эффект нажатия - уменьшение объёма */
+    box-shadow: 
+        /* Уменьшенная тень при нажатии */
+        0 2px 0 #4a7c59,
+        /* Минимальная глубокая тень */
+        0 4px 8px rgba(74, 124, 89, 0.3),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        /* Уменьшенное свечение */
+        0 0 10px rgba(74, 124, 89, 0.2);
+}
+
+.button-main-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.button-discount-text {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.subscription-note {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Responsive Design for Subscription */
+@media (max-width: 1024px) {
+    .subscription-content {
+        gap: 50px;
+    }
+    
+    .cashback-card {
+        width: 350px;
+        height: 220px;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .subscription {
+        padding: 60px 0;
+    }
+    
+    .subscription-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+        padding: 20px 10px;
+        margin: 0;
+        border-radius: 20px;
+    }
+    
+    .subscription-left,
+    .subscription-right {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
+    
+    .subscription-plans {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .plan-option.popular {
+        transform: none;
+    }
+    
+    .cashback-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 30px;
+        height: auto;
+        min-height: 180px;
+        padding: 20px;
+    }
+    
+    /* Скрываем лишние элементы на мобильной версии */
+    .card-stats,
+    .card-footer {
+        display: none !important;
+    }
+    
+    .cashback-description {
+        text-align: center;
+        margin-bottom: 25px;
+        padding: 0;
+    }
+    
+    .cashback-description p {
+        font-size: 15px;
+        padding: 0 5px;
+        line-height: 1.4;
+    }
+    
+    .subscription-button {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px 20px;
+        font-size: 1rem;
+        margin: 0;
+    }
+    
+    .subscription-cta {
+        text-align: center;
+        width: 100%;
+        padding: 0;
+    }
+    
+    .benefit-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 15px;
+    }
+    
+    .subscription-description h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        line-height: 1.3;
+        padding: 0 10px;
+        text-align: center;
+    }
+    
+    .subscription-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .subscription-header .section-title {
+        font-size: 2rem;
+        line-height: 1.2;
+        padding: 0 15px;
+    }
+    
+    .card-number {
+        font-size: 1.1rem;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .card-info {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .subscription {
+        padding: 40px 0;
+    }
+    
+    .subscription-content {
+        padding: 15px 5px;
+        margin: 0;
+        border-radius: 15px;
+    }
+    
+    .cashback-card {
+        padding: 15px;
+        min-height: 160px;
+        margin: 0 auto 20px;
+    }
+    
+    .card-header {
+        margin-bottom: 15px;
+    }
+    
+    .card-logo span:first-child {
+        font-size: 1.2rem;
+    }
+    
+    .card-number {
+        font-size: 0.9rem;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    
+    .card-info {
+        margin-bottom: 0;
+    }
+    
+    .label {
+        font-size: 0.6rem;
+    }
+    
+    .name, .date {
+        font-size: 0.8rem;
+    }
+    
+    .subscription-button {
+        padding: 14px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .button-main-text {
+        font-size: 0.95rem;
+    }
+    
+    .button-discount-text {
+        font-size: 0.75rem;
+    }
+    
+    .benefit-item {
+        padding: 12px;
+    }
+    
+    .benefit-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .subscription-description h3 {
+        font-size: 1rem;
+        line-height: 1.2;
+        padding: 0 5px;
+        text-align: center;
+    }
+    
+    .cashback-description p {
+        font-size: 13px;
+        padding: 0;
+        line-height: 1.3;
+    }
+    
+    .subscription-header .section-title {
+        font-size: 1.6rem;
+        line-height: 1.1;
+        padding: 0 10px;
+        text-align: center;
+    }
+    
+    .subscription-badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+}

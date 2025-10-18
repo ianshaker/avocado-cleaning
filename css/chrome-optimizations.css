@@ -1,0 +1,128 @@
+/* Chrome Performance Optimizations */
+/* Устранение мерцания при скролле в Chrome */
+
+/* Общие оптимизации для всех анимированных элементов */
+[class*="animation"],
+[class*="animate"],
+[style*="animation"],
+[style*="transform"],
+.hero-title,
+.hero-subtitle,
+.city-selector,
+.selector-tile,
+.service-card,
+.benefit-card,
+.trust-card,
+.subscription-card {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+
+/* Оптимизация для пульсирующих элементов */
+[class*="pulse"]::after,
+[class*="pulse"]::before,
+.city-tile.active::after {
+    will-change: transform, opacity, box-shadow;
+    transform: translateZ(0);
+    contain: layout style paint;
+}
+
+/* Оптимизация для floating элементов */
+.floating-logo,
+.floating-icon,
+.bubbles,
+.bubble {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Оптимизация для hover эффектов */
+.selector-tile:hover,
+.service-card:hover,
+.benefit-card:hover,
+.trust-card:hover,
+.subscription-card:hover {
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+/* Оптимизация для модальных окон */
+.modal,
+.modal-content,
+.modal-overlay {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    contain: layout style paint;
+}
+
+/* Оптимизация для форм */
+.form-container,
+.form-group,
+.form-input,
+.form-button {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Оптимизация для видео контейнеров */
+.video-container,
+.owner-photo,
+video {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Принудительное создание композитного слоя для критических элементов */
+.hero {
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
+    isolation: isolate;
+}
+
+/* Оптимизация для smooth scroll */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Отключение анимаций для пользователей с настройкой reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Chrome-специфичные фиксы для мерцания */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* Только для WebKit браузеров (Chrome, Safari) */
+    
+    /* Принудительное включение hardware acceleration */
+    * {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+    }
+    
+
+    
+    /* Фикс для анимированных элементов */
+    [class*="animation"],
+    [class*="animate"] {
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+}
