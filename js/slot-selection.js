@@ -317,19 +317,36 @@ class SlotSelection {
         const avatarsWrap = document.createElement('div');
         avatarsWrap.className = 'slot-avatars';
     
-        // Массив всех фотографий мастеров
-        const masterPhotos = [
-            'media/masters/elena.jpg',
-            'media/masters/anton.jpg',
-            'media/masters/semen.jpg'
+        // Массив фотографий мастеров в зависимости от города
+        const masterPhotos = this.currentCity === 'astana' ? [
+            'media/masters/astana1.jpg',
+            'media/masters/astana2.jpg',
+            'media/masters/astana3.jpg',
+            'media/masters/astana4.jpg'
+        ] : [
+            'media/masters/almaty1.jpg',
+            'media/masters/almaty2.jpg',
+            'media/masters/almaty3.jpg',
+            'media/masters/almaty4.jpg'
         ];
+        
+        // Создаем копию массива для перемешивания без дублирования
+        const shuffledPhotos = [...masterPhotos];
         
         for (let i = 0; i < state.avatars; i++) {
             const av = document.createElement('div');
             av.className = 'avatar';
-            // Случайный выбор фотографии мастера для каждого аватара
-            const randomPhoto = masterPhotos[Math.floor(Math.random() * masterPhotos.length)];
-            av.style.backgroundImage = `url('${randomPhoto}')`;
+            
+            // Если закончились уникальные фотографии, перемешиваем массив заново
+            if (shuffledPhotos.length === 0) {
+                shuffledPhotos.push(...masterPhotos);
+            }
+            
+            // Выбираем случайную фотографию и удаляем её из доступных
+            const randomIndex = Math.floor(Math.random() * shuffledPhotos.length);
+            const selectedPhoto = shuffledPhotos.splice(randomIndex, 1)[0];
+            
+            av.style.backgroundImage = `url('${selectedPhoto}')`;
             av.setAttribute('aria-hidden','true');
             avatarsWrap.appendChild(av);
         }

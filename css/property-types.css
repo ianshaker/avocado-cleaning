@@ -1,0 +1,485 @@
+/* ========================================
+   PROPERTY TYPES SECTION STYLES
+   Horizontal tiles for КВАРТИРА, КОТТЕДЖ, ОФИС
+   ======================================== */
+
+/* Property Types Section */
+.property-types {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.property-types::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(39, 174, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(39, 174, 96, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.property-types-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.property-types .section-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.property-types .section-subtitle {
+    font-size: 18px;
+    color: #b0b0b0;
+    margin: 0;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.property-types-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Property Tile Styles */
+.property-tile {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.property-tile:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border-color: rgba(39, 174, 96, 0.3);
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.property-tile-content {
+    display: flex;
+    align-items: stretch;
+    min-height: 320px;
+}
+
+.property-tile-left {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.property-tile-right {
+    flex: 0 0 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Property Tile Header */
+.property-tile-header {
+    margin-bottom: 25px;
+}
+
+.property-tile-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.property-tile-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+}
+
+/* Property Tile Description */
+.property-tile-description h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cleaning-process-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cleaning-process-list li {
+    position: relative;
+    padding: 8px 0 8px 25px;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.cleaning-process-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.property-tile:hover .cleaning-process-list li {
+    color: #f0f0f0;
+}
+
+/* Photo Placeholder */
+.property-photo-placeholder {
+    width: 240px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.property-tile:hover .property-photo-placeholder {
+    border-color: rgba(39, 174, 96, 0.5);
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.photo-placeholder-content {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.photo-placeholder-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.photo-placeholder-text {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .property-types {
+        padding: 60px 0;
+    }
+    
+    .property-types .section-title {
+        font-size: 40px;
+    }
+    
+    .property-tile-content {
+        min-height: 280px;
+    }
+    
+    .property-tile-right {
+        flex: 0 0 250px;
+    }
+    
+    .property-photo-placeholder {
+        width: 200px;
+        height: 160px;
+    }
+    
+    .property-tile-left {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .property-types {
+        padding: 50px 0;
+    }
+    
+    .property-types .section-title {
+        font-size: 32px;
+        letter-spacing: 1px;
+    }
+    
+    .property-types .section-subtitle {
+        font-size: 16px;
+    }
+    
+    .property-types-content {
+        gap: 20px;
+    }
+    
+    .property-tile-content {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .property-tile-left {
+        padding: 25px;
+        order: 1;
+    }
+    
+    .property-tile-right {
+        flex: none;
+        padding: 20px;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        order: 2;
+    }
+    
+    .property-tile-title {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+    
+    .property-tile-description h4 {
+        font-size: 16px;
+    }
+    
+    .cleaning-process-list li {
+        font-size: 13px;
+        padding: 6px 0 6px 20px;
+    }
+    
+    .property-photo-placeholder {
+        width: 180px;
+        height: 140px;
+        margin: 0 auto;
+    }
+    
+    .photo-placeholder-icon {
+        font-size: 24px;
+    }
+    
+    .photo-placeholder-text {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .property-types {
+        padding: 40px 0;
+    }
+    
+    .property-types-header {
+        margin-bottom: 40px;
+    }
+    
+    .property-types .section-title {
+        font-size: 28px;
+    }
+    
+    .property-tile-left {
+        padding: 20px;
+    }
+    
+    .property-tile-title {
+        font-size: 20px;
+    }
+    
+    .property-tile-badge {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+    
+    .property-photo-placeholder {
+        width: 160px;
+        height: 120px;
+    }
+}
+
+/* ========================================
+   PROPERTY GALLERY STYLES
+   ======================================== */
+
+.property-gallery {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-container {
+    position: relative;
+    width: 380px;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-main-image {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+.gallery-main-image .main-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.gallery-main-image .main-image.active {
+    opacity: 1;
+}
+
+.gallery-thumbnails {
+    display: flex;
+    gap: 4px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.gallery-thumbnails .thumbnail {
+    flex: 1;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.gallery-thumbnails .thumbnail:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.gallery-thumbnails .thumbnail.active {
+    opacity: 1;
+    border-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.4);
+}
+
+.gallery-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+}
+
+.gallery-navigation button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: all;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-navigation button:hover {
+    background: rgba(39, 174, 96, 0.8);
+    transform: scale(1.1);
+}
+
+.gallery-navigation button:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gallery-container {
+        width: 360px;
+        height: 320px;
+    }
+    
+    .gallery-main-image {
+        height: 260px;
+    }
+    
+    .gallery-thumbnails .thumbnail {
+        height: 50px;
+    }
+    
+    .gallery-navigation button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        width: 340px;
+        height: 310px;
+    }
+    
+    .gallery-main-image {
+        height: 255px;
+    }
+    
+    .gallery-thumbnails .thumbnail {
+        height: 40px;
+    }
+    
+    .gallery-navigation button {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}

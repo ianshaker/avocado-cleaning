@@ -294,8 +294,7 @@
 
 .object-tile.active {
     background: linear-gradient(135deg, #9fdc7c 0%, #2d6e2d 100%);
-    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2),
-                0 4px 15px rgba(159, 220, 124, 0.4);
+    box-shadow: 0 4px 15px rgba(159, 220, 124, 0.4);
     color: white;
     font-weight: 700;
 }
@@ -375,8 +374,7 @@
 
 .service-tile.active {
     background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
-    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2),
-                0 4px 15px rgba(255, 196, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 196, 0, 0.4);
     color: var(--primary-dark);
     font-weight: 700;
 }

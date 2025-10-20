@@ -104,7 +104,7 @@
     justify-content: center;
     gap: 6px;
     border-top: 2px solid var(--primary-dark);
-    border-radius: 0 0 20px 20px;
+    border-radius: 0;
 }
 
 .badge-icon {
@@ -112,6 +112,29 @@
     height: 18px;
     stroke: var(--primary-dark);
     flex-shrink: 0;
+}
+
+/* Review Action Button */
+.review-action-button {
+    width: 100%;
+    background: #ffffff;
+    color: var(--primary-dark);
+    border: none;
+    border-top: 2px solid rgba(45, 90, 61, 0.2);
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 0 0 20px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.review-action-button:hover {
+    background: #ffffff;
+    opacity: 0.9;
 }
 
 .review-image {
@@ -195,6 +218,11 @@
         width: 16px;
         height: 16px;
     }
+
+    .review-action-button {
+        font-size: 0.85rem;
+        padding: 12px 18px;
+    }
 }
 
 /* Small Mobile */
@@ -214,6 +242,11 @@
     .review-badge {
         font-size: 0.7rem;
         padding: 10px 12px;
+    }
+
+    .review-action-button {
+        font-size: 0.8rem;
+        padding: 10px 15px;
     }
 }
 

@@ -96,8 +96,9 @@ section {
 }
 
 @media (max-width: 768px) {
-
-
+    .container {
+        padding: 0 15px !important;
+    }
 
     .icon-1, .icon-5, .icon-9 {
         width: 50px;
@@ -127,6 +128,9 @@ section {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 12px !important;
+    }
 
     .section-title {
         font-size: 1.4rem;

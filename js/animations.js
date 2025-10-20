@@ -160,6 +160,87 @@ class AnimationsManager {
             }
         }
 
+        // Обрабатываем сервисные видео
+        const serviceVideos = [
+            { imageId: 'service-image-full', videoId: 'service-video-full' },
+            { imageId: 'service-image-fast', videoId: 'service-video-fast' },
+            { imageId: 'service-image-chip', videoId: 'service-video-chip' }
+        ];
+
+        serviceVideos.forEach(({ imageId, videoId }) => {
+            const serviceImage = document.getElementById(imageId);
+            const serviceVideo = document.getElementById(videoId);
+            
+            if (serviceImage && serviceVideo) {
+                // Убеждаемся, что изображение видимо изначально
+                serviceImage.style.display = 'block';
+                serviceImage.style.opacity = '1';
+                serviceVideo.style.display = 'none';
+                
+                // Функция для показа видео
+                const showServiceVideo = () => {
+                    // Плавно скрываем изображение
+                    serviceImage.style.transition = 'opacity 0.5s ease';
+                    serviceImage.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        serviceImage.style.display = 'none';
+                        serviceVideo.style.display = 'block';
+                        serviceVideo.style.opacity = '0';
+                        serviceVideo.style.transition = 'opacity 0.5s ease';
+                        
+                        // Плавно показываем видео
+                        setTimeout(() => {
+                            serviceVideo.style.opacity = '1';
+                        }, 50);
+                    }, 500);
+                };
+
+                // Функция для загрузки и показа видео
+                const loadServiceVideo = () => {
+                    // Проверяем, готово ли видео к воспроизведению (кэшированное)
+                    if (serviceVideo.readyState >= 3) {
+                        // Видео уже загружено (из кэша), сразу показываем
+                        showServiceVideo();
+                    } else {
+                        // Видео не загружено, начинаем загрузку
+                        serviceVideo.load();
+                        
+                        // Когда видео готово к воспроизведению
+                        serviceVideo.addEventListener('canplaythrough', () => {
+                            showServiceVideo();
+                        }, { once: true });
+                        
+                        // Обработка ошибок загрузки
+                        serviceVideo.addEventListener('error', () => {
+                            console.warn(`Ошибка загрузки видео ${videoId}, оставляем изображение`);
+                        }, { once: true });
+                    }
+                };
+                
+                // Создаем наблюдатель для ленивой загрузки видео
+                const serviceVideoObserver = new IntersectionObserver((entries) => {
+                    requestAnimationFrame(() => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+                                loadServiceVideo();
+                                serviceVideoObserver.unobserve(entry.target);
+                            }
+                        });
+                    });
+                }, {
+                    threshold: [0.2, 0.5],
+                    rootMargin: '50px'
+                });
+                
+                // Наблюдаем за контейнером сервисного видео
+                const serviceVideoContainer = serviceImage.closest('.service-video-section');
+                if (serviceVideoContainer) {
+                    serviceVideoObserver.observe(serviceVideoContainer);
+                }
+            }
+        });
+
         // Также ищем другие видео контейнеры (для будущего использования)
         const videoContainers = document.querySelectorAll('.video-container');
         
