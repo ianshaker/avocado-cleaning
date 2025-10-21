@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/location.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/top-bar.css">
+    <link rel="stylesheet" href="css/lazy-loading.css">
     <link rel="stylesheet" href="css/chrome-optimizations.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,10 +38,10 @@
             </div>
             <div class="top-bar-right">
                 <a href="https://wa.me/77470969648" class="social-icon whatsapp-icon" aria-label="WhatsApp" target="_blank">
-                    <img src="media/social/whatsapp.png" alt="WhatsApp">
+                    <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
                 </a>
                 <a href="https://t.me/avocadocleaning" class="social-icon telegram-icon" aria-label="Telegram" target="_blank">
-                    <img src="media/social/telegram.png" alt="Telegram">
+                    <img src="images/placeholder.svg" data-src="media/social/telegram.png" alt="Telegram">
                 </a>
             </div>
         </div>
@@ -145,7 +146,7 @@
                 </div>
 
                 <div class="hero-image">
-                    <img src="media/logo/logo.png" alt="AvocadoCleaning" class="floating-logo">
+                    <img src="images/placeholder.svg" data-src="media/logo/logo.png" alt="AvocadoCleaning" class="floating-logo">
                 </div>
             </div>
             </div> <!-- End Green Container Wrapper -->
@@ -169,7 +170,7 @@
                 </div>
                 <div class="benefits-right">
                     <div class="owner-photo">
-                        <img src="media/trust/testimonial-cover.jpg" alt="Семен Костенко - основатель AvocadoCleaning" class="owner-image" id="owner-image">
+                        <img src="images/placeholder.svg" data-src="media/trust/testimonial-cover.jpg" alt="Семен Костенко - основатель AvocadoCleaning" class="owner-image" id="owner-image">
                         <video 
                             src="media/trust/testimonial-video-light.MP4" 
                             alt="Семен Костенко - основатель AvocadoCleaning" 
@@ -182,7 +183,7 @@
                             style="display: none;">
                         </video>
                         <div class="award-badge">
-                            <img src="media/nagrada/nagrada.png" alt="Награда за качество" class="award-image">
+                            <img src="images/placeholder.svg" data-src="media/nagrada/nagrada.png" alt="Награда за качество" class="award-image">
                         </div>
                     </div>
                 </div>
@@ -191,16 +192,20 @@
             <div class="trust-points-overlay">
                 <div class="trust-points">
                     <div class="trust-card">
-                        <span class="trust-card-text">Работаем в сменной обуви</span>
+                        <img src="images/placeholder.svg" data-src="media/trust/shoes.png" alt="Сменная обувь" class="trust-card-icon">
+                        <span class="trust-card-text">Берем с собой сменную обувь</span>
                     </div>
                     <div class="trust-card">
-                        <span class="trust-card-text">Не мешаем посторонними разговорами</span>
+                        <img src="images/placeholder.svg" data-src="media/trust/speak.png" alt="Без разговоров" class="trust-card-icon">
+                        <span class="trust-card-text">Не мешаем лишними разговорами</span>
                     </div>
                     <div class="trust-card">
-                        <span class="trust-card-text">Точная цена озвучивается до начала уборки!</span>
+                        <img src="images/placeholder.svg" data-src="media/trust/price.png" alt="Точная цена" class="trust-card-icon">
+                        <span class="trust-card-text">Озвучиваем цену до начала уборки!</span>
                     </div>
                     <div class="trust-card">
-                        <span class="trust-card-text">ЧЕК-ЛИСТ для проверки в конце уборки</span>
+                        <img src="images/placeholder.svg" data-src="media/trust/checklist.png" alt="Чек-лист" class="trust-card-icon">
+                        <span class="trust-card-text">Чек-лист для проверки уборки</span>
                     </div>
                 </div>
             </div>
@@ -217,10 +222,10 @@
                 <div class="gallery-item">
                     <div class="before-after-container" data-item="1">
                         <div class="before-image">
-                            <img src="media/doposle/do1.jpg" alt="До уборки - кухня">
+                            <img src="images/placeholder.svg" data-src="media/doposle/do1.jpg" alt="До уборки - кухня">
                         </div>
                         <div class="after-image">
-                            <img src="media/doposle/posle1.jpg" alt="После уборки - кухня">
+                            <img src="images/placeholder.svg" data-src="media/doposle/posle1.jpg" alt="После уборки - кухня">
                         </div>
                         <div class="slider-handle">
                             <div class="slider-line"></div>
@@ -240,10 +245,10 @@
                 <div class="gallery-item">
                     <div class="before-after-container" data-item="2">
                         <div class="before-image">
-                            <img src="media/doposle/do2.jpg" alt="До уборки - ванная">
+                            <img src="images/placeholder.svg" data-src="media/doposle/do2.jpg" alt="До уборки - ванная">
                         </div>
                         <div class="after-image">
-                            <img src="media/doposle/posle2.jpg" alt="После уборки - ванная">
+                            <img src="images/placeholder.svg" data-src="media/doposle/posle2.jpg" alt="После уборки - ванная">
                         </div>
                         <div class="slider-handle">
                             <div class="slider-line"></div>
@@ -263,10 +268,10 @@
                 <div class="gallery-item">
                     <div class="before-after-container" data-item="3">
                         <div class="before-image">
-                            <img src="media/doposle/do3.jpg" alt="До уборки - гостиная">
+                            <img src="images/placeholder.svg" data-src="media/doposle/do3.jpg" alt="До уборки - гостиная">
                         </div>
                         <div class="after-image">
-                            <img src="media/doposle/posle3.jpg" alt="После уборки - гостиная">
+                            <img src="images/placeholder.svg" data-src="media/doposle/posle3.jpg" alt="После уборки - гостиная">
                         </div>
                         <div class="slider-handle">
                             <div class="slider-line"></div>
@@ -316,12 +321,12 @@
             <div class="green-packages-wrapper">
                 <!-- Floating Elements for Services -->
                 <div class="services-floating-elements">
-                    <img src="media/inventar/bucket.png" alt="" class="services-floating-icon services-icon-1">
-                    <img src="media/inventar/mop.png" alt="" class="services-floating-icon services-icon-2">
-                    <img src="media/inventar/vacuum.png" alt="" class="services-floating-icon services-icon-3">
-                    <img src="media/inventar/brush.png" alt="" class="services-floating-icon services-icon-4">
-                    <img src="media/inventar/bucket.png" alt="" class="services-floating-icon services-icon-5">
-                    <img src="media/inventar/mop.png" alt="" class="services-floating-icon services-icon-6">
+                    <img src="images/placeholder.svg" data-src="media/inventar/bucket.png" alt="" class="services-floating-icon services-icon-1">
+                    <img src="images/placeholder.svg" data-src="media/inventar/mop.png" alt="" class="services-floating-icon services-icon-2">
+                    <img src="images/placeholder.svg" data-src="media/inventar/vacuum.png" alt="" class="services-floating-icon services-icon-3">
+                    <img src="images/placeholder.svg" data-src="media/inventar/brush.png" alt="" class="services-floating-icon services-icon-4">
+                    <img src="images/placeholder.svg" data-src="media/inventar/bucket.png" alt="" class="services-floating-icon services-icon-5">
+                    <img src="images/placeholder.svg" data-src="media/inventar/mop.png" alt="" class="services-floating-icon services-icon-6">
                 </div>
                 <!-- Bubbles for Services -->
                 <div class="services-bubbles-container">
@@ -338,7 +343,7 @@
                 <div class="service-card">
                     <div class="discount-badge discount-small">-20%</div>
                     <div class="service-video-section">
-                    <img src="media/videoservices/fullfoto.jpg" alt="Важен бюджет - превью" class="service-video-preview" id="service-image-full">
+                    <img src="images/placeholder.svg" data-src="media/videoservices/fullfoto.jpg" alt="Важен бюджет - превью" class="service-video-preview" id="service-image-full">
                     <video autoplay muted loop playsinline preload="metadata" webkit-playsinline class="service-video" id="service-video-full" style="display: none;">
                         <source src="media/videoservices/full.MP4" type="video/mp4">
                         Ваш браузер не поддерживает видео.
@@ -356,7 +361,7 @@
                         <div class="package-button-container">
                             <button class="package-button">Мой случай</button>
                             <a href="https://wa.me/77470969648" class="package-whatsapp-icon" aria-label="WhatsApp" target="_blank">
-                                <img src="media/social/whatsapp.png" alt="WhatsApp">
+                                <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
                             </a>
                         </div>
                     </div>
@@ -365,7 +370,7 @@
                 <div class="service-card">
                     <div class="priority-badge priority-small">Приоритетные слоты</div>
                     <div class="service-video-section">
-                    <img src="media/videoservices/fastfoto.jpg" alt="Важна скорость - превью" class="service-video-preview" id="service-image-fast">
+                    <img src="images/placeholder.svg" data-src="media/videoservices/fastfoto.jpg" alt="Важна скорость - превью" class="service-video-preview" id="service-image-fast">
                     <video autoplay muted loop playsinline preload="metadata" webkit-playsinline class="service-video" id="service-video-fast" style="display: none;">
                         <source src="media/videoservices/fast.MP4" type="video/mp4">
                         Ваш браузер не поддерживает видео.
@@ -383,7 +388,7 @@
                         <div class="package-button-container">
                             <button class="package-button">Мой случай</button>
                             <a href="https://wa.me/77470969648" class="package-whatsapp-icon" aria-label="WhatsApp" target="_blank">
-                                <img src="media/social/whatsapp.png" alt="WhatsApp">
+                                <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
                             </a>
                         </div>
                     </div>
@@ -392,7 +397,7 @@
                 <div class="service-card">
                     <div class="gift-badge gift-small">3 подарка на выбор</div>
                     <div class="service-video-section">
-                    <img src="media/videoservices/chipfoto.jpg" alt="ПОЛНЫЙ КЛЮЧ - превью" class="service-video-preview" id="service-image-chip">
+                    <img src="images/placeholder.svg" data-src="media/videoservices/chipfoto.jpg" alt="ПОЛНЫЙ КЛЮЧ - превью" class="service-video-preview" id="service-image-chip">
                     <video autoplay muted loop playsinline preload="metadata" webkit-playsinline class="service-video" id="service-video-chip" style="display: none;">
                         <source src="media/videoservices/chip.MP4" type="video/mp4">
                         Ваш браузер не поддерживает видео.
@@ -410,7 +415,7 @@
                         <div class="package-button-container">
                             <button class="package-button">Мой случай</button>
                             <a href="https://wa.me/77470969648" class="package-whatsapp-icon" aria-label="WhatsApp" target="_blank">
-                                <img src="media/social/whatsapp.png" alt="WhatsApp">
+                                <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
                             </a>
                         </div>
                     </div>
@@ -580,16 +585,16 @@
                             <div class="property-gallery" data-property="flat">
                                 <div class="gallery-container">
                                     <div class="gallery-main-image">
-                                        <img src="media/examples/flat/flat1.jpg" alt="Уборка квартиры - пример 1" class="main-image active" data-index="0">
-                                        <img src="media/examples/flat/flat2.jpg" alt="Уборка квартиры - пример 2" class="main-image" data-index="1">
-                                        <img src="media/examples/flat/flat3.jpg" alt="Уборка квартиры - пример 3" class="main-image" data-index="2">
-                                        <img src="media/examples/flat/flat4.jpg" alt="Уборка квартиры - пример 4" class="main-image" data-index="3">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat1.jpg" alt="Уборка квартиры - пример 1" class="main-image active" data-index="0">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat2.jpg" alt="Уборка квартиры - пример 2" class="main-image" data-index="1">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat3.jpg" alt="Уборка квартиры - пример 3" class="main-image" data-index="2">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat4.jpg" alt="Уборка квартиры - пример 4" class="main-image" data-index="3">
                                     </div>
                                     <div class="gallery-thumbnails">
-                                        <img src="media/examples/flat/flat1.jpg" alt="Миниатюра 1" class="thumbnail active" data-index="0">
-                                        <img src="media/examples/flat/flat2.jpg" alt="Миниатюра 2" class="thumbnail" data-index="1">
-                                        <img src="media/examples/flat/flat3.jpg" alt="Миниатюра 3" class="thumbnail" data-index="2">
-                                        <img src="media/examples/flat/flat4.jpg" alt="Миниатюра 4" class="thumbnail" data-index="3">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat1.jpg" alt="Миниатюра 1" class="thumbnail active" data-index="0">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat2.jpg" alt="Миниатюра 2" class="thumbnail" data-index="1">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat3.jpg" alt="Миниатюра 3" class="thumbnail" data-index="2">
+                                        <img src="images/placeholder.svg" data-src="media/examples/flat/flat4.jpg" alt="Миниатюра 4" class="thumbnail" data-index="3">
                                     </div>
                                     <div class="gallery-navigation">
                                         <button class="gallery-prev" aria-label="Предыдущее фото">‹</button>
@@ -627,16 +632,16 @@
                             <div class="property-gallery" data-property="house">
                                 <div class="gallery-container">
                                     <div class="gallery-main-image">
-                                        <img src="media/examples/house/house1.jpg" alt="Уборка коттеджа - пример 1" class="main-image active" data-index="0">
-                                        <img src="media/examples/house/house2.jpg" alt="Уборка коттеджа - пример 2" class="main-image" data-index="1">
-                                        <img src="media/examples/house/house3.jpg" alt="Уборка коттеджа - пример 3" class="main-image" data-index="2">
-                                        <img src="media/examples/house/house4.jpg" alt="Уборка коттеджа - пример 4" class="main-image" data-index="3">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house1.jpg" alt="Уборка коттеджа - пример 1" class="main-image active" data-index="0">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house2.jpg" alt="Уборка коттеджа - пример 2" class="main-image" data-index="1">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house3.jpg" alt="Уборка коттеджа - пример 3" class="main-image" data-index="2">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house4.jpg" alt="Уборка коттеджа - пример 4" class="main-image" data-index="3">
                                     </div>
                                     <div class="gallery-thumbnails">
-                                        <img src="media/examples/house/house1.jpg" alt="Миниатюра 1" class="thumbnail active" data-index="0">
-                                        <img src="media/examples/house/house2.jpg" alt="Миниатюра 2" class="thumbnail" data-index="1">
-                                        <img src="media/examples/house/house3.jpg" alt="Миниатюра 3" class="thumbnail" data-index="2">
-                                        <img src="media/examples/house/house4.jpg" alt="Миниатюра 4" class="thumbnail" data-index="3">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house1.jpg" alt="Миниатюра 1" class="thumbnail active" data-index="0">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house2.jpg" alt="Миниатюра 2" class="thumbnail" data-index="1">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house3.jpg" alt="Миниатюра 3" class="thumbnail" data-index="2">
+                                        <img src="images/placeholder.svg" data-src="media/examples/house/house4.jpg" alt="Миниатюра 4" class="thumbnail" data-index="3">
                                     </div>
                                     <div class="gallery-navigation">
                                         <button class="gallery-prev" aria-label="Предыдущее фото">‹</button>
@@ -674,16 +679,16 @@
                             <div class="property-gallery" data-property="office">
                                 <div class="gallery-container">
                                     <div class="gallery-main-image">
-                                        <img src="media/examples/office/office1.jpg" alt="Уборка офиса - пример 1" class="main-image active" data-index="0">
-                                        <img src="media/examples/office/office2.jpg" alt="Уборка офиса - пример 2" class="main-image" data-index="1">
-                                        <img src="media/examples/office/office3.jpg" alt="Уборка офиса - пример 3" class="main-image" data-index="2">
-                                        <img src="media/examples/office/office4.jpg" alt="Уборка офиса - пример 4" class="main-image" data-index="3">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office1.jpg" alt="Уборка офиса - пример 1" class="main-image active" data-index="0">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office2.jpg" alt="Уборка офиса - пример 2" class="main-image" data-index="1">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office3.jpg" alt="Уборка офиса - пример 3" class="main-image" data-index="2">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office4.jpg" alt="Уборка офиса - пример 4" class="main-image" data-index="3">
                                     </div>
                                     <div class="gallery-thumbnails">
-                                        <img src="media/examples/office/office1.jpg" alt="Миниатюра 1" class="thumbnail active" data-index="0">
-                                        <img src="media/examples/office/office2.jpg" alt="Миниатюра 2" class="thumbnail" data-index="1">
-                                        <img src="media/examples/office/office3.jpg" alt="Миниатюра 3" class="thumbnail" data-index="2">
-                                        <img src="media/examples/office/office4.jpg" alt="Миниатюра 4" class="thumbnail" data-index="3">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office1.jpg" alt="Миниатюра 1" class="thumbnail active" data-index="0">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office2.jpg" alt="Миниатюра 2" class="thumbnail" data-index="1">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office3.jpg" alt="Миниатюра 3" class="thumbnail" data-index="2">
+                                        <img src="images/placeholder.svg" data-src="media/examples/office/office4.jpg" alt="Миниатюра 4" class="thumbnail" data-index="3">
                                     </div>
                                     <div class="gallery-navigation">
                                         <button class="gallery-prev" aria-label="Предыдущее фото">‹</button>
@@ -829,7 +834,7 @@
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="review-image-wrapper">
-                        <img src="media/reviews/review-1.jpg" alt="Отзыв клиента 1" class="review-image">
+                        <img src="images/placeholder.svg" data-src="media/reviews/review-1.jpg" alt="Отзыв клиента 1" class="review-image">
                     </div>
                     <div class="review-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -841,7 +846,7 @@
 
                 <div class="review-card">
                     <div class="review-image-wrapper">
-                        <img src="media/reviews/review-2.jpg" alt="Отзыв клиента 2" class="review-image">
+                        <img src="images/placeholder.svg" data-src="media/reviews/review-2.jpg" alt="Отзыв клиента 2" class="review-image">
                     </div>
                     <div class="review-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -853,7 +858,7 @@
 
                 <div class="review-card">
                     <div class="review-image-wrapper">
-                        <img src="media/reviews/review-3.jpg" alt="Отзыв клиента 3" class="review-image">
+                        <img src="images/placeholder.svg" data-src="media/reviews/review-3.jpg" alt="Отзыв клиента 3" class="review-image">
                     </div>
                     <div class="review-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -865,7 +870,7 @@
 
                 <div class="review-card">
                     <div class="review-image-wrapper">
-                        <img src="media/reviews/review-4.jpg" alt="Отзыв клиента 4" class="review-image">
+                        <img src="images/placeholder.svg" data-src="media/reviews/review-4.jpg" alt="Отзыв клиента 4" class="review-image">
                     </div>
                     <div class="review-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -877,7 +882,7 @@
 
                 <div class="review-card">
                     <div class="review-image-wrapper">
-                        <img src="media/reviews/review-5.jpg" alt="Отзыв клиента 5" class="review-image">
+                        <img src="images/placeholder.svg" data-src="media/reviews/review-5.jpg" alt="Отзыв клиента 5" class="review-image">
                     </div>
                     <div class="review-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -889,7 +894,7 @@
 
                 <div class="review-card">
                     <div class="review-image-wrapper">
-                        <img src="media/reviews/review-6.jpg" alt="Отзыв клиента 6" class="review-image">
+                        <img src="images/placeholder.svg" data-src="media/reviews/review-6.jpg" alt="Отзыв клиента 6" class="review-image">
                     </div>
                     <div class="review-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -949,117 +954,14 @@
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="contact-form">
-        <div class="container">
-            <div class="form-header">
-                <h2 class="section-title">Получите персональное предложение</h2>
-                <p class="section-subtitle">Оставьте заявку и получите <span class="highlight">скидку 20%</span> на первую уборку!</p>
-                <div class="form-benefits">
-                    <div class="benefit-item">
-                        <span>Быстрый ответ за 15 минут</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span>Скидка 20% на первую уборку</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span>Бесплатная консультация</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-container">
-                <div class="form-right">
-                    <form class="form" id="contactForm">
-                        <div class="form-step active" data-step="1">
-                            <h4 class="step-title">Шаг 1 из 2: Контактная информация</h4>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">Как к вам обращаться?</label>
-                                    <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
-                                    <span class="error-message">Пожалуйста, введите ваше имя</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Номер телефона</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
-                                    <span class="error-message">Пожалуйста, введите корректный номер</span>
-                                    <span class="field-hint">Мы не передаем данные третьим лицам</span>
-                                </div>
-                            </div>
-                            <button type="button" class="next-step-btn">Далее →</button>
-                        </div>
-                        
-                        <div class="form-step" data-step="2">
-                            <h4 class="step-title">Шаг 2 из 2: Детали уборки</h4>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="service">Какая уборка вам нужна?</label>
-                                    <select id="service" name="service" required>
-                                        <option value="">Выберите услугу</option>
-                                        <option value="apartment" data-discount="20">Уборка квартир (-20%)</option>
-                                        <option value="office" data-discount="15">Уборка офисов (-15%)</option>
-                                        <option value="cottage" data-discount="25">Уборка коттеджей (-25%)</option>
-                                        <option value="maintaining" data-discount="10">Поддерживающая уборка (-10%)</option>
-                                        <option value="general" data-discount="20">Генеральная уборка (-20%)</option>
-                                        <option value="subscription" data-discount="30">Подписка на уборку (-30%)</option>
-                                    </select>
-                                    <span class="error-message">Пожалуйста, выберите услугу</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="area">Площадь помещения (м²)</label>
-                                    <input type="number" id="area" name="area" placeholder="Например, 65">
-                                    <span class="field-hint">Поможет рассчитать точную стоимость</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Особые пожелания</label>
-                                <textarea id="message" name="message" rows="3" placeholder="Есть ли особые требования к уборке? (необязательно)"></textarea>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" class="prev-step-btn">← Назад</button>
-                                <button type="submit" class="submit-button">
-                                    <span class="btn-text">Получить скидку 20%</span>
-                                    <span class="btn-icon">🎁</span>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="progress-bar">
-                            <div class="progress-fill"></div>
-                        </div>
-                        
-                        <p class="form-notice">
-                            <span class="security-icon">🔒</span>
-                            Ваши данные защищены. Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-                        </p>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="success-message" id="successMessage">
-                <div class="success-animation">
-                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="32" cy="32" r="28" fill="#9fdc7c"/>
-                        <path d="M20 32L28 40L44 24" stroke="#1a5e1a" stroke-width="4" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3>🎉 Поздравляем! Заявка принята!</h3>
-                <p>Ваша скидка 20% зарезервирована. Мы свяжемся с вами в течение 15 минут для уточнения деталей.</p>
-                <div class="success-benefits">
-                    <div class="success-item">✅ Скидка 20% активирована</div>
-                    <div class="success-item">✅ Бесплатная консультация включена</div>
-                    <div class="success-item">✅ Приоритетная запись</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <img src="media/logo/logo.png" alt="AvocadoCleaning" class="footer-logo">
+                    <img src="images/placeholder.svg" data-src="media/logo/logo.png" alt="AvocadoCleaning" class="footer-logo">
                     <p class="footer-description">Профессиональная уборка с заботой о вашем здоровье и комфорте</p>
                 </div>
                 <div class="footer-column">
@@ -1083,10 +985,10 @@
                     <h4>Мы в соцсетях</h4>
                     <div class="social-links">
                         <a href="https://wa.me/77470969648" aria-label="WhatsApp" target="_blank">
-                            <img src="media/social/whatsapp.png" alt="WhatsApp">
+                            <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
                         </a>
                         <a href="https://t.me/avocadocleaning" aria-label="Telegram" target="_blank">
-                            <img src="media/social/telegram.png" alt="Telegram">
+                            <img src="images/placeholder.svg" data-src="media/social/telegram.png" alt="Telegram">
                         </a>
                     </div>
                 </div>
@@ -1102,15 +1004,16 @@
 
     <!-- JavaScript модули -->
 
-
+    <script src="js/telegram-integration.js"></script>
     <script src="js/forms.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/interactive.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/slot-selection.js?v=4"></script>
 <script src="js/before-after-gallery.js"></script>
-<script src="js/property-gallery.js"></script>
-<script src="js/main.js"></script>
+    <script src="js/property-gallery.js"></script>
+    <script src="js/lazy-loading.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
 

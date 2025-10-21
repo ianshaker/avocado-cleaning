@@ -219,4 +219,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 200);
         });
     });
+    
+    // Обработчик для кнопок "Хочу также" - переход на WhatsApp
+    const galleryActionButtons = document.querySelectorAll('.gallery-action-button');
+    galleryActionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Номер WhatsApp
+            const whatsappNumber = '77470969648';
+            // Сообщение для WhatsApp
+            const message = 'Здравствуйте! Хочу заказать уборку как на фото в разделе "До и После". Можете рассчитать стоимость?';
+            // Создаем ссылку на WhatsApp
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            // Открываем WhatsApp в новой вкладке
+            window.open(whatsappUrl, '_blank');
+        });
+    });
 });

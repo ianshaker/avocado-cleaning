@@ -79,6 +79,9 @@ class App {
             return 1;
         };
 
+        // Делаем slotSelection доступным глобально
+        window.slotSelection = this.slotSelection;
+
         // Функция получения выбранного города
         window.getSelectedCity = () => {
             if (this.interactiveManager) {
