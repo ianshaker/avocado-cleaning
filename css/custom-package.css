@@ -833,7 +833,7 @@
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 500;
     text-align: center;
-    width: 200px;
+    width: 250px;
     /* Упрощенный объёмный эффект */
     box-shadow: 
         0 6px 0 #4a7c59,

@@ -21,6 +21,8 @@ class InteractiveManager {
         this.initPropertyTypeSelection();
         this.initCleaningTypeSelection();
         this.initRoomCounter();
+        this.initPackageButtons();
+        this.initSubscriptionButton();
     }
 
     /**
@@ -295,6 +297,51 @@ class InteractiveManager {
                     countDisplay.textContent = this.roomCount;
                 }
                 break;
+        }
+    }
+
+    /**
+     * Инициализация кнопок пакетов "Мой случай"
+     */
+    initPackageButtons() {
+        const packageButtons = document.querySelectorAll('.package-button');
+        
+        packageButtons.forEach(button => {
+            // Исключаем кнопку "Отправить на просчет" из обработчика WhatsApp
+            if (button.classList.contains('custom-package-button-new')) {
+                return;
+            }
+            
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Открываем WhatsApp с предзаполненным сообщением
+                const message = encodeURIComponent('Здравствуйте! Меня интересует один из ваших пакетов услуг клининга. Хотел бы обсудить мой случай.');
+                const whatsappUrl = `https://wa.me/77470969648?text=${message}`;
+                
+                // Открываем в новой вкладке
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+    }
+
+    /**
+     * Инициализация кнопки "Оформить подписку"
+     */
+    initSubscriptionButton() {
+        const subscriptionButton = document.querySelector('.subscription-button');
+        
+        if (subscriptionButton) {
+            subscriptionButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Открываем WhatsApp с предзаполненным сообщением о подписке
+                const message = encodeURIComponent('Здравствуйте! Меня интересует подписка на уборку. Хотел бы узнать подробности и оформить подписку.');
+                const whatsappUrl = `https://wa.me/77470969648?text=${message}`;
+                
+                // Открываем в новой вкладке
+                window.open(whatsappUrl, '_blank');
+            });
         }
     }
 }

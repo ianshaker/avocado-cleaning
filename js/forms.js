@@ -4,117 +4,25 @@
  */
 class FormsManager {
     constructor() {
-        this.contactForm = document.getElementById('contactForm');
         this.heroForm = document.getElementById('heroForm');
         this.successMessage = document.getElementById('successMessage');
-        this.currentStep = 1;
-        this.totalSteps = 2;
-        
-        this.init();
     }
 
     /**
      * Инициализация всех форм
      */
     init() {
-        this.initContactForm();
         this.initHeroForm();
+        this.initCustomPackageForm();
         this.addShakeAnimation();
-        this.initMultiStepForm();
         this.initSpotsCounter();
     }
 
-    /**
-     * Инициализация контактной формы
-     */
-    initContactForm() {
-        if (!this.contactForm) return;
 
-        const phoneInput = document.getElementById('phone');
-        if (phoneInput) {
-            this.addPhoneMask(phoneInput);
-        }
 
-        this.addFormValidation();
-        this.addContactFormSubmission();
-    }
 
-    /**
-     * Инициализация многошагового процесса формы
-     */
-    initMultiStepForm() {
-        if (!this.contactForm) return;
 
-        const nextBtn = this.contactForm.querySelector('.next-step-btn');
-        const prevBtn = this.contactForm.querySelector('.prev-step-btn');
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.nextStep());
-        }
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => this.prevStep());
-        }
 
-        this.updateProgressBar();
-    }
-
-    /**
-     * Переход к следующему шагу
-     */
-    nextStep() {
-        const currentStepElement = this.contactForm.querySelector(`.form-step[data-step="${this.currentStep}"]`);
-        const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
-        
-        let isValid = true;
-        requiredFields.forEach(field => {
-            if (!this.validateField(field)) {
-                isValid = false;
-            }
-        });
-
-        if (isValid && this.currentStep < this.totalSteps) {
-            this.currentStep++;
-            this.showStep(this.currentStep);
-            this.updateProgressBar();
-        }
-    }
-
-    /**
-     * Переход к предыдущему шагу
-     */
-    prevStep() {
-        if (this.currentStep > 1) {
-            this.currentStep--;
-            this.showStep(this.currentStep);
-            this.updateProgressBar();
-        }
-    }
-
-    /**
-     * Показать определенный шаг
-     */
-    showStep(step) {
-        const steps = this.contactForm.querySelectorAll('.form-step');
-        steps.forEach((stepElement, index) => {
-            if (index + 1 === step) {
-                stepElement.classList.add('active');
-            } else {
-                stepElement.classList.remove('active');
-            }
-        });
-    }
-
-    /**
-     * Обновить прогресс-бар
-     */
-    updateProgressBar() {
-        const progressFill = this.contactForm.querySelector('.progress-fill');
-        if (progressFill) {
-            const progress = (this.currentStep / this.totalSteps) * 100;
-            progressFill.style.width = `${progress}%`;
-        }
-    }
 
     /**
      * Инициализация счетчика оставшихся мест
@@ -147,28 +55,102 @@ class FormsManager {
      * @param {HTMLElement} phoneInput - Поле ввода телефона
      */
     addPhoneMask(phoneInput) {
+        // Устанавливаем начальное значение с задержкой для корректного отображения
+        const setInitialValue = () => {
+            if (!phoneInput.value || phoneInput.value === '') {
+                phoneInput.value = '+7 (';
+                // Принудительно обновляем отображение
+                phoneInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        };
+        
+        // Устанавливаем значение сразу и через небольшую задержку
+        setInitialValue();
+        setTimeout(setInitialValue, 100);
+
         phoneInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
+            const input = e.target;
+            const cursorPosition = input.selectionStart;
+            let value = input.value.replace(/\D/g, '');
+            
+            // Обрабатываем случай, когда пользователь начинает с 8
             if (value.length > 0) {
-                if (value[0] === '8') value = '7' + value.slice(1);
-                if (value[0] !== '7') value = '7' + value;
+                if (value[0] === '8') {
+                    value = '7' + value.slice(1);
+                }
+                if (value[0] !== '7') {
+                    value = '7' + value;
+                }
             }
             
-            let formatted = '+7';
-            if (value.length > 1) {
-                formatted += ' (' + value.substring(1, 4);
-            }
-            if (value.length >= 5) {
-                formatted += ') ' + value.substring(4, 7);
-            }
-            if (value.length >= 8) {
-                formatted += '-' + value.substring(7, 9);
-            }
-            if (value.length >= 10) {
-                formatted += '-' + value.substring(9, 11);
+            // Ограничиваем длину до 11 цифр
+            if (value.length > 11) {
+                value = value.substring(0, 11);
             }
             
-            e.target.value = formatted;
+            // Форматируем номер
+            let formatted = '';
+            if (value.length > 0) {
+                formatted = '+7';
+                if (value.length > 1) {
+                    formatted += ' (' + value.substring(1, 4);
+                    if (value.length >= 4) {
+                        formatted += ') ' + value.substring(4, 7);
+                        if (value.length >= 7) {
+                            formatted += '-' + value.substring(7, 9);
+                            if (value.length >= 9) {
+                                formatted += '-' + value.substring(9, 11);
+                            }
+                        }
+                    }
+                }
+            } else {
+                formatted = '+7 (';
+            }
+            
+            // Устанавливаем отформатированное значение
+            input.value = formatted;
+            
+            // Восстанавливаем позицию курсора
+            let newCursorPosition = cursorPosition;
+            if (cursorPosition <= 3) {
+                newCursorPosition = 4; // После "+7 ("
+            } else if (cursorPosition <= 8) {
+                newCursorPosition = Math.min(cursorPosition, formatted.length);
+            } else {
+                newCursorPosition = formatted.length;
+            }
+            
+            // Устанавливаем курсор в правильную позицию
+            setTimeout(() => {
+                input.setSelectionRange(newCursorPosition, newCursorPosition);
+            }, 0);
+        });
+
+        // Обрабатываем событие focus для установки курсора в правильную позицию
+        phoneInput.addEventListener('focus', (e) => {
+            // Если поле пустое или содержит только placeholder, устанавливаем маску
+            if (!e.target.value || e.target.value === '' || e.target.value === e.target.placeholder) {
+                e.target.value = '+7 (';
+            }
+            
+            if (e.target.value === '+7 (') {
+                setTimeout(() => {
+                    e.target.setSelectionRange(4, 4);
+                }, 0);
+            }
+        });
+
+        // Обрабатываем событие keydown для предотвращения удаления префикса
+        phoneInput.addEventListener('keydown', (e) => {
+            const input = e.target;
+            const cursorPosition = input.selectionStart;
+            
+            // Предотвращаем удаление префикса "+7 ("
+            if ((e.key === 'Backspace' || e.key === 'Delete') && cursorPosition <= 4) {
+                e.preventDefault();
+                input.setSelectionRange(4, 4);
+            }
         });
     }
 
@@ -220,50 +202,13 @@ class FormsManager {
         });
     }
 
-    /**
-     * Обработка отправки контактной формы
-     */
-    addContactFormSubmission() {
-        this.contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
 
-            const formInputs = this.contactForm.querySelectorAll('input, select, textarea');
-            let isFormValid = true;
-            
-            formInputs.forEach(input => {
-                if (!this.validateField(input)) {
-                    isFormValid = false;
-                }
-            });
-
-            if (isFormValid) {
-                const formData = {
-                    name: document.getElementById('name').value,
-                    phone: document.getElementById('phone').value,
-                    service: document.getElementById('service').value,
-                    area: document.getElementById('area').value,
-                    message: document.getElementById('message').value
-                };
-
-                console.log('Контактная форма отправлена:', formData);
-
-                // Показываем сообщение об успехе
-                this.showSuccessMessage();
-            } else {
-                // Прокручиваем к первой ошибке
-                const firstError = this.contactForm.querySelector('.form-group.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        });
-    }
 
     /**
      * Обработка отправки героической формы
      */
     addHeroFormSubmission() {
-        this.heroForm.addEventListener('submit', (e) => {
+        this.heroForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const heroPhoneInput = document.getElementById('heroPhone');
@@ -281,6 +226,21 @@ class FormsManager {
                 return;
             }
 
+            // Проверяем выбран ли слот
+            const slotSelection = window.slotSelection;
+            console.log('slotSelection объект:', slotSelection);
+            
+            const selectedSlotData = slotSelection ? slotSelection.getSelectedSlot() : null;
+            console.log('selectedSlotData:', selectedSlotData);
+            
+            if (!selectedSlotData) {
+                console.log('Слот не выбран, показываем alert');
+                alert('Пожалуйста, выберите удобное время для клининга');
+                return;
+            }
+            
+            console.log('Слот выбран, продолжаем отправку:', selectedSlotData);
+
             // Получаем выбранные опции
             const selectedCity = document.querySelector('.city-tile.active')?.dataset.city || 'не выбран';
             const selectedObjects = Array.from(document.querySelectorAll('.object-tile.active')).map(t => t.dataset.type);
@@ -294,6 +254,34 @@ class FormsManager {
             };
 
             console.log('Героическая форма отправлена:', heroFormData);
+
+            // Показываем индикатор загрузки
+            const submitButton = this.heroForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Отправляем...';
+            submitButton.disabled = true;
+
+            // Отправляем в Telegram
+            let telegramSuccess = false;
+            try {
+                const telegramBot = window.TelegramBot;
+                if (telegramBot && telegramBot.isConfigured()) {
+                    telegramSuccess = await telegramBot.sendSlotBooking(selectedSlotData, phone, selectedCity);
+                    if (telegramSuccess) {
+                        console.log('✅ Заявка отправлена в Telegram');
+                    } else {
+                        console.warn('⚠️ Не удалось отправить в Telegram, но форма обработана');
+                    }
+                } else {
+                    console.warn('⚠️ Telegram бот не настроен');
+                }
+            } catch (error) {
+                console.error('❌ Ошибка отправки в Telegram:', error);
+            }
+
+            // Восстанавливаем кнопку
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
 
             // Визуальная обратная связь об успехе
             this.showHeroSuccessMessage();
@@ -348,6 +336,168 @@ class FormsManager {
             `;
             document.head.appendChild(style);
         }
+    }
+
+    /**
+     * Инициализация формы "Свой пакет"
+     */
+    initCustomPackageForm() {
+        const customPackageButton = document.querySelector('.custom-package-button-new');
+        if (!customPackageButton) return;
+
+        customPackageButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.handleCustomPackageSubmission();
+        });
+
+        // Добавляем маску для телефона в форме "Свой пакет"
+        const phoneInput = document.querySelector('.custom-phone-input-new');
+        if (phoneInput) {
+            this.addPhoneMask(phoneInput);
+        }
+    }
+
+    /**
+     * Обработка отправки формы "Свой пакет"
+     */
+    async handleCustomPackageSubmission() {
+        try {
+            // Собираем данные формы
+            const packageData = this.collectCustomPackageData();
+            
+            // Валидация
+            if (!this.validateCustomPackageData(packageData)) {
+                return;
+            }
+
+            console.log('Форма "Свой пакет" отправлена:', packageData);
+
+            // Показываем индикатор загрузки
+            const submitButton = document.querySelector('.custom-package-button-new');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Отправляем...';
+            submitButton.disabled = true;
+
+            // Отправляем в Telegram
+            let telegramSuccess = false;
+            try {
+                const telegramBot = window.TelegramBot;
+                if (telegramBot && telegramBot.isConfigured()) {
+                    telegramSuccess = await telegramBot.sendCustomPackage(packageData);
+                }
+            } catch (error) {
+                console.error('Ошибка отправки в Telegram:', error);
+            }
+
+            // Восстанавливаем кнопку
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+
+            if (telegramSuccess) {
+                this.showCustomPackageSuccessMessage();
+                this.resetCustomPackageForm();
+            } else {
+                alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.');
+            }
+
+        } catch (error) {
+            console.error('Ошибка обработки формы "Свой пакет":', error);
+            
+            // Восстанавливаем кнопку в случае ошибки
+            const submitButton = document.querySelector('.custom-package-button-new');
+            if (submitButton) {
+                submitButton.textContent = 'Отправить на просчет';
+                submitButton.disabled = false;
+            }
+            
+            alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
+        }
+    }
+
+    /**
+     * Сбор данных формы "Свой пакет"
+     */
+    collectCustomPackageData() {
+        // Получаем данные из InteractiveManager
+        const interactiveManager = window.app?.interactiveManager;
+        
+        // Собираем дополнительные услуги
+        const additionalServices = {};
+        const serviceCheckboxes = document.querySelectorAll('.toggle-checkbox-ultra-compact');
+        serviceCheckboxes.forEach(checkbox => {
+            additionalServices[checkbox.id] = checkbox.checked;
+        });
+
+        return {
+            phone: document.querySelector('.custom-phone-input-new')?.value || '',
+            area: document.getElementById('area')?.value || '',
+            rooms: interactiveManager?.getTotalRooms() || document.getElementById('total-rooms')?.textContent || '1',
+            propertyType: interactiveManager?.getSelectedPropertyType() || 'не выбран',
+            cleaningType: interactiveManager?.getSelectedCleaningType() || 'не выбран',
+            additionalServices: additionalServices
+        };
+    }
+
+    /**
+     * Валидация данных формы "Свой пакет"
+     */
+    validateCustomPackageData(data) {
+        if (!data.phone || data.phone.length < 10) {
+            alert('Пожалуйста, введите корректный номер телефона');
+            document.querySelector('.custom-phone-input-new')?.focus();
+            return false;
+        }
+
+        if (!data.area || data.area < 1) {
+            alert('Пожалуйста, укажите площадь помещения');
+            document.getElementById('area')?.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Показ сообщения об успешной отправке формы "Свой пакет"
+     */
+    showCustomPackageSuccessMessage() {
+        const submitButton = document.querySelector('.custom-package-button-new');
+        if (submitButton) {
+            submitButton.textContent = 'Отправлено';
+            submitButton.style.backgroundColor = '#28a745';
+            submitButton.disabled = true;
+            
+            // Через 3 секунды возвращаем исходный вид кнопки
+            setTimeout(() => {
+                submitButton.textContent = 'Отправить на просчет';
+                submitButton.style.backgroundColor = '';
+                submitButton.disabled = false;
+            }, 3000);
+        }
+    }
+
+    /**
+     * Сброс формы "Свой пакет"
+     */
+    resetCustomPackageForm() {
+        // Очищаем поля
+        const phoneInput = document.querySelector('.custom-phone-input-new');
+        const areaInput = document.getElementById('area');
+        
+        if (phoneInput) phoneInput.value = '';
+        if (areaInput) areaInput.value = '';
+
+        // Сбрасываем селекторы через InteractiveManager
+        const interactiveManager = window.app?.interactiveManager;
+        if (interactiveManager) {
+            interactiveManager.resetSelections();
+        }
+
+        // Сбрасываем чекбоксы дополнительных услуг
+        const serviceCheckboxes = document.querySelectorAll('.toggle-checkbox-ultra-compact');
+        serviceCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
     }
 
 

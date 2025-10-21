@@ -212,6 +212,7 @@
     .review-badge {
         font-size: 0.75rem;
         padding: 12px 15px;
+        border-radius: 0 0 20px 20px;
     }
 
     .badge-icon {
@@ -242,6 +243,7 @@
     .review-badge {
         font-size: 0.7rem;
         padding: 10px 12px;
+        border-radius: 0 0 20px 20px;
     }
 
     .review-action-button {

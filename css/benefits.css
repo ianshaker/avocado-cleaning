@@ -119,12 +119,11 @@
 }
 
 .trust-card-icon {
-    width: 50px;
-    height: 50px;
-    color: var(--primary);
+    width: 60px;
+    height: 60px;
     flex-shrink: 0;
     background: linear-gradient(135deg, rgba(159, 220, 124, 0.15) 0%, rgba(159, 220, 124, 0.08) 100%);
-    border-radius: 16px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,6 +131,8 @@
     z-index: 1;
     transition: all 0.4s ease;
     box-shadow: 0 4px 15px rgba(159, 220, 124, 0.2);
+    object-fit: contain;
+    padding: 10px;
 }
 
 .trust-card:hover .trust-card-icon {
@@ -140,13 +141,10 @@
     box-shadow: 0 6px 20px rgba(159, 220, 124, 0.3);
 }
 
-.trust-card-icon svg {
-    width: 24px;
-    height: 24px;
-}
+
 
 .trust-card-text {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text-dark);
     font-weight: 600;
     line-height: 1.4;

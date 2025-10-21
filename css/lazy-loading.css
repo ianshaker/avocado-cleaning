@@ -1,0 +1,116 @@
+/* Lazy Loading Styles */
+
+/* Базовые стили для изображений с ленивой загрузкой */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: var(--gray-light);
+    background-image: linear-gradient(90deg, var(--gray-light) 0%, #e9ecef 50%, var(--gray-light) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Анимация мерцания для placeholder */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Состояние загрузки */
+img.lazy-loading {
+    opacity: 0.5;
+    filter: blur(2px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Состояние после загрузки */
+img.lazy-loaded {
+    opacity: 1;
+    filter: none;
+    background: none;
+    animation: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Состояние ошибки загрузки */
+img.lazy-error {
+    opacity: 0.5;
+    background: #f8d7da;
+    background-image: none;
+    animation: none;
+}
+
+/* Специальные стили для разных типов изображений */
+
+/* Изображения в галерее до/после */
+.before-after-gallery img[data-src] {
+    min-height: 200px;
+}
+
+/* Изображения в галерее примеров */
+.property-gallery img[data-src] {
+    min-height: 250px;
+}
+
+/* Изображения отзывов */
+.review-image[data-src] {
+    min-height: 300px;
+}
+
+/* Изображения услуг */
+.service-video-preview[data-src] {
+    min-height: 200px;
+}
+
+/* Логотип и иконки - загружаем сразу (критически важные) */
+.footer-logo,
+.floating-logo,
+.trust-card-icon,
+.social-icon img,
+.floating-icon {
+    /* Эти изображения не будут иметь ленивую загрузку */
+    opacity: 1 !important;
+    background: none !important;
+    animation: none !important;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    img[data-src] {
+        min-height: 150px;
+    }
+    
+    .before-after-gallery img[data-src] {
+        min-height: 150px;
+    }
+    
+    .property-gallery img[data-src] {
+        min-height: 200px;
+    }
+    
+    .review-image[data-src] {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    img[data-src] {
+        min-height: 120px;
+    }
+    
+    .before-after-gallery img[data-src] {
+        min-height: 120px;
+    }
+    
+    .property-gallery img[data-src] {
+        min-height: 150px;
+    }
+    
+    .review-image[data-src] {
+        min-height: 200px;
+    }
+}

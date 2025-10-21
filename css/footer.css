@@ -1,13 +1,13 @@
 /* Footer */
 .footer {
-    background: transparent;
-    color: var(--white);
+    background: var(--gray-light);
+    color: var(--primary-dark);
     padding: 0 0 30px;
     margin-top: 80px;
 }
 
 .footer .container {
-    background: var(--primary-dark);
+    background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--primary-light) 100%);
     padding: 50px 40px;
     border-radius: 25px;
     box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.15);
@@ -21,21 +21,21 @@
 }
 
 .footer-logo {
-    height: 80px;
+    height: 100px;
     width: auto;
     margin-bottom: 20px;
-    filter: brightness(0) invert(1);
 }
 
 .footer-description {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(26, 94, 26, 0.8);
     line-height: 1.6;
 }
 
 .footer-column h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: white;
+    color: var(--primary-dark);
+    font-weight: 700;
 }
 
 .footer-links,
@@ -50,14 +50,16 @@
 
 .footer-links a,
 .footer-contacts a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(26, 94, 26, 0.9);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 .footer-links a:hover,
 .footer-contacts a:hover {
-    color: var(--accent-yellow);
+    color: var(--primary-dark);
+    font-weight: 600;
 }
 
 .social-links {
@@ -97,11 +99,17 @@
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(26, 94, 26, 0.2);
     padding-top: 30px;
     margin-top: 10px;
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(26, 94, 26, 0.7);
+}
+
+.footer-bottom a {
+    color: var(--primary-dark);
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* Footer Media Queries */
@@ -126,6 +134,14 @@
 }
 
 @media (max-width: 768px) {
+    .footer {
+        padding: 0 20px 20px 20px !important;
+    }
+
+    .footer .container {
+        padding: 40px 30px !important;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -135,12 +151,16 @@
 @media (max-width: 480px) {
     .footer {
         margin-top: 50px;
-        padding: 0 15px 20px 15px;
+        padding: 0 20px 20px 20px !important;
     }
 
     .footer .container {
-        padding: 35px 20px;
+        padding: 30px 25px !important;
         border-radius: 15px;
+    }
+
+    .footer-logo {
+        height: 85px;
     }
 
     .footer-content {
@@ -149,5 +169,21 @@
 
     .footer-bottom {
         padding-top: 20px;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 360px) {
+    .footer {
+        padding: 0 15px 20px 15px !important;
+    }
+
+    .footer .container {
+        padding: 25px 20px !important;
+        border-radius: 12px;
+    }
+
+    .footer-logo {
+        height: 75px;
     }
 }
