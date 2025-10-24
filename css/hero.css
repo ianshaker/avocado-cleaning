@@ -58,6 +58,8 @@
     animation: fadeInLeft 0.8s ease-out 0.2s backwards;
 }
 
+
+
 /* Time selection styles moved to css/time-selection.css */
 
 /* Selector Tiles - Base */
@@ -108,8 +110,14 @@
     padding: 12px 20px;
     position: relative;
     transform: translateY(0px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), flex-grow 0.4s ease, font-size 0.3s ease;
     font-weight: 500;
+    font-size: 0.8rem; /* Базовый размер для неактивных кнопок */
+    flex-grow: 0.8; /* Меньший размер для неактивных */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75; /* Делаем неактивные кнопки чуть бледнее */
     /* Многослойный объёмный эффект с зелёными оттенками */
     box-shadow: 
         /* Основная тень кнопки (зелёная) */
@@ -125,6 +133,7 @@
 .city-tile:hover {
     background: linear-gradient(145deg, #ffffff, #f8f9fa);
     transform: translateY(-2px);
+    opacity: 1; /* Полная непрозрачность при наведении */
     /* Увеличенный объёмный эффект при наведении */
     box-shadow: 
         /* Основная тень кнопки (увеличена) */
@@ -141,6 +150,9 @@
     background: linear-gradient(145deg, #ffffff, #f0f8f0);
     color: #2d5a3d;
     font-weight: 600;
+    font-size: 0.9rem; /* Увеличенный размер текста для активной кнопки */
+    flex-grow: 2; /* Больший размер для активной кнопки */
+    opacity: 1; /* Полная непрозрачность для активной кнопки */
     /* Особый объёмный эффект для активной кнопки */
     box-shadow: 
         /* Основная тень кнопки (тёмно-зелёная) */
@@ -222,8 +234,13 @@
     width: 18px;
     height: 18px;
     fill: currentColor;
-    vertical-align: middle;
     display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.city-tile.active .location-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .tile-icon {

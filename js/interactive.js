@@ -33,12 +33,24 @@ class InteractiveManager {
         
         cityTiles.forEach(tile => {
             tile.addEventListener('click', () => {
+                const selectedCity = tile.dataset.city;
+                
                 // Убираем активный класс со всех тайлов
                 cityTiles.forEach(t => t.classList.remove('active'));
                 // Добавляем активный класс к выбранному
                 tile.classList.add('active');
                 
-                this.selectedCity = tile.dataset.city;
+                this.selectedCity = selectedCity;
+                
+                // Обновляем URL параметр
+                if (window.app && window.app.updateUrlParameter) {
+                    window.app.updateUrlParameter('city', selectedCity);
+                }
+                
+                // Синхронизируем с Location секцией
+                if (window.app && window.app.setActiveCity) {
+                    window.app.setActiveCity(selectedCity);
+                }
             });
         });
     }

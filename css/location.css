@@ -1,6 +1,88 @@
 /* Location Section */
 .location {
     background: var(--gray-light);
+    padding: 50px 0; /* Уменьшенные отступы вместо стандартных 80px */
+}
+
+/* Contact Container */
+.contact-container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Стили для переключателя городов */
+.city-selector {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.city-toggle {
+    position: relative;
+    display: inline-flex;
+    background: #f0f0f0;
+    border-radius: 25px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.city-btn {
+    position: relative;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: #666;
+    border-radius: 21px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 14px;
+    z-index: 2;
+    min-width: 80px;
+}
+
+.city-btn:hover {
+    color: #333;
+}
+
+.city-btn.active {
+    color: white;
+}
+
+.city-toggle::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border-radius: 21px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.city-toggle.astana::before {
+    transform: translateX(100%);
+}
+
+.location-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .city-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        min-width: 70px;
+    }
 }
 
 .location-content {
@@ -65,5 +147,59 @@
 
     .map-container {
         height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+    
+    .city-selector {
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+    
+    .city-toggle {
+        width: 100%;
+        max-width: 300px;
+        padding: 6px;
+    }
+    
+    .city-btn {
+        padding: 14px 24px;
+        font-size: 16px;
+        font-weight: 600;
+        min-width: auto;
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .location {
+        padding: 40px 0; /* Еще меньше отступы на планшетах */
+    }
+}
+
+@media (max-width: 480px) {
+    .location {
+        padding: 30px 0; /* Минимальные отступы на мобильных */
+    }
+    
+    .contact-container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    .city-toggle {
+        padding: 8px;
+    }
+    
+    .city-btn {
+        padding: 16px 28px;
+        font-size: 18px;
+        font-weight: 700;
     }
 }

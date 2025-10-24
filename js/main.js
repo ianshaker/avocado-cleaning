@@ -30,6 +30,12 @@ class App {
         this.utils.init();
         this.slotSelection.init();
 
+        // Инициализируем переключатель городов
+        this.initLocationSwitcher();
+
+        // Инициализируем город из URL параметра
+        this.initCityFromUrl();
+
         // Настраиваем глобальные функции для обратной совместимости
         this.setupGlobalFunctions();
 
@@ -126,6 +132,170 @@ class App {
                 this.animationsManager.forceLoadAllVideos();
             }
         };
+    }
+
+    /**
+     * Инициализация переключателя городов
+     */
+    initLocationSwitcher() {
+        const cities = {
+            almaty: {
+                title: 'Наш офис в Алматы',
+                address: 'г. Алматы, ул. Римского-Корсакова, 19а',
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=76.9286%2C43.2567&z=16&l=map&pt=76.9286%2C43.2567%2Cpm2rdm'
+            },
+            astana: {
+                title: 'Наш офис в Астане',
+                address: 'г. Астана, ул. Сыганак, 29',
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=71.434274%2C51.123097&z=16&l=map&pt=71.434274%2C51.123097%2Cpm2rdm'
+            }
+        };
+
+        const cityButtons = document.querySelectorAll('.city-btn');
+        const cityToggle = document.getElementById('cityToggle');
+        const officeTitle = document.getElementById('office-title');
+        const officeAddress = document.getElementById('office-address');
+        const mapFrame = document.getElementById('office-map');
+
+        cityButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedCity = button.dataset.city;
+                
+                // Обновляем URL параметр
+                this.updateUrlParameter('city', selectedCity);
+                
+                // Синхронизируем с Hero секцией
+                const heroTiles = document.querySelectorAll('.city-tile');
+                heroTiles.forEach(tile => {
+                    tile.classList.remove('active');
+                    if (tile.dataset.city === selectedCity) {
+                        tile.classList.add('active');
+                    }
+                });
+
+                // Обновляем selectedCity в InteractiveManager
+                if (this.interactiveManager) {
+                    this.interactiveManager.selectedCity = selectedCity;
+                }
+
+                const data = cities[selectedCity];
+
+                // Обновляем активную кнопку
+                cityButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Обновляем класс для анимации ползунка
+                if (cityToggle) {
+                    if (selectedCity === 'astana') {
+                        cityToggle.classList.add('astana');
+                    } else {
+                        cityToggle.classList.remove('astana');
+                    }
+                }
+
+                // Обновляем контент
+                if (officeTitle) officeTitle.textContent = data.title;
+                if (officeAddress) officeAddress.textContent = data.address;
+                if (mapFrame) mapFrame.src = data.mapUrl;
+            });
+        });
+    }
+
+    /**
+     * Получение параметра из URL
+     */
+    getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    /**
+     * Обновление URL параметра без перезагрузки страницы
+     */
+    updateUrlParameter(key, value) {
+        const url = new URL(window.location);
+        url.searchParams.set(key, value);
+        window.history.pushState({}, '', url);
+    }
+
+    /**
+     * Инициализация города из URL параметра
+     */
+    initCityFromUrl() {
+        const cityParam = this.getUrlParameter('city');
+        const validCities = ['almaty', 'astana'];
+        const defaultCity = 'almaty';
+        
+        const selectedCity = validCities.includes(cityParam) ? cityParam : defaultCity;
+        
+        console.log('Initializing city from URL:', selectedCity);
+        this.setActiveCity(selectedCity);
+    }
+
+    /**
+     * Установка активного города в обеих секциях
+     */
+    setActiveCity(cityName) {
+        console.log('Setting active city:', cityName);
+        
+        // Обновляем Hero секцию
+        const heroTiles = document.querySelectorAll('.city-tile');
+        heroTiles.forEach(tile => {
+            tile.classList.remove('active');
+            if (tile.dataset.city === cityName) {
+                tile.classList.add('active');
+            }
+        });
+
+        // Обновляем Location секцию
+        const locationButtons = document.querySelectorAll('.city-btn');
+        const cityToggle = document.getElementById('cityToggle');
+        const officeTitle = document.getElementById('office-title');
+        const officeAddress = document.getElementById('office-address');
+        const mapFrame = document.getElementById('office-map');
+
+        const cities = {
+            almaty: {
+                title: 'Наш офис в Алматы',
+                address: 'г. Алматы, ул. Римского-Корсакова, 19а',
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=76.9286%2C43.2567&z=16&l=map&pt=76.9286%2C43.2567%2Cpm2rdm'
+            },
+            astana: {
+                title: 'Наш офис в Астане',
+                address: 'г. Астана, ул. Сыганак, 29',
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=71.434274%2C51.123097&z=16&l=map&pt=71.434274%2C51.123097%2Cpm2rdm'
+            }
+        };
+
+        const data = cities[cityName];
+        if (data) {
+            // Обновляем активную кнопку в Location секции
+            locationButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.city === cityName) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Обновляем класс для анимации ползунка
+            if (cityToggle) {
+                if (cityName === 'astana') {
+                    cityToggle.classList.add('astana');
+                } else {
+                    cityToggle.classList.remove('astana');
+                }
+            }
+
+            // Обновляем контент
+            if (officeTitle) officeTitle.textContent = data.title;
+            if (officeAddress) officeAddress.textContent = data.address;
+            if (mapFrame) mapFrame.src = data.mapUrl;
+        }
+
+        // Обновляем selectedCity в InteractiveManager
+        if (this.interactiveManager) {
+            this.interactiveManager.selectedCity = cityName;
+        }
     }
 
     /**
