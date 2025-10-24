@@ -914,17 +914,25 @@
     <!-- Location Section -->
     <section id="location" class="location">
         <div class="container">
-            <h2 class="section-title">Где мы находимся</h2>
-            <div class="location-content">
+            <!-- Contact Information Container -->
+            <div class="contact-container">
+                <div class="location-content">
                 <div class="location-info">
-                    <h3>Наш офис в Алматы</h3>
+                    <!-- City Selector for Location -->
+                    <div class="city-selector">
+                        <div class="city-toggle" id="cityToggle">
+                            <button class="city-btn active" data-city="almaty">Алматы</button>
+                            <button class="city-btn" data-city="astana">Астана</button>
+                        </div>
+                    </div>
+                    <h3 id="office-title">Наш офис в Алматы</h3>
                     <div class="location-item">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#1a5e1a"/>
                         </svg>
                         <div>
                             <strong>Адрес:</strong>
-                            <p>г. Алматы, ул. Римского-Корсакова, 19а</p>
+                            <p id="office-address">г. Алматы, ул. Римского-Корсакова, 19а</p>
                         </div>
                     </div>
                     <div class="location-item">
@@ -948,7 +956,8 @@
                     </div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=76.926155%2C43.232820&z=16&l=map&pt=76.926155,43.232820,pm2rdm" width="100%" height="100%" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+                    <iframe id="office-map" src="https://yandex.ru/map-widget/v1/?ll=76.926155%2C43.232820&z=16&l=map&pt=76.926155,43.232820,pm2rdm" width="100%" height="100%" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+                </div>
                 </div>
             </div>
         </div>
@@ -977,8 +986,8 @@
                     <h4>Контакты</h4>
                     <ul class="footer-contacts">
                         <li><a href="tel:+77470969648">+7 (747) 096-96-48</a></li>
-
                         <li>г. Алматы, ул. Римского-Корсакова, 19а</li>
+                        <li>г. Астана, ул. Кенесары, 40</li>
                     </ul>
                 </div>
                 <div class="footer-column">
