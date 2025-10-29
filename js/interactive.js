@@ -329,7 +329,7 @@ class InteractiveManager {
                 
                 // Открываем WhatsApp с предзаполненным сообщением
                 const message = encodeURIComponent('Здравствуйте! Меня интересует один из ваших пакетов услуг клининга. Хотел бы обсудить мой случай.');
-                const whatsappUrl = `https://wa.me/77470969648?text=${message}`;
+                const whatsappUrl = `https://wa.me/77766502960?text=${message}`;
                 
                 // Открываем в новой вкладке
                 window.open(whatsappUrl, '_blank');
@@ -349,7 +349,7 @@ class InteractiveManager {
                 
                 // Открываем WhatsApp с предзаполненным сообщением о подписке
                 const message = encodeURIComponent('Здравствуйте! Меня интересует подписка на уборку. Хотел бы узнать подробности и оформить подписку.');
-                const whatsappUrl = `https://wa.me/77470969648?text=${message}`;
+                const whatsappUrl = `https://wa.me/77766502960?text=${message}`;
                 
                 // Открываем в новой вкладке
                 window.open(whatsappUrl, '_blank');
