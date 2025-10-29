@@ -142,12 +142,12 @@ class App {
             almaty: {
                 title: 'Наш офис в Алматы',
                 address: 'г. Алматы, ул. Римского-Корсакова, 19а',
-                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=76.9286%2C43.2567&z=16&l=map&pt=76.9286%2C43.2567%2Cpm2rdm'
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=76.928020%2C43.233360&z=16&l=map&pt=76.928020%2C43.233360%2Cpm2rdm'
             },
             astana: {
                 title: 'Наш офис в Астане',
-                address: 'г. Астана, ул. Сыганак, 29',
-                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=71.434274%2C51.123097&z=16&l=map&pt=71.434274%2C51.123097%2Cpm2rdm'
+                address: 'г. Астана, Адырна 15',
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=71.432298%2C51.138313&z=16&l=map&pt=71.432298%2C51.138313%2Cpm2rdm'
             }
         };
 
@@ -258,12 +258,12 @@ class App {
             almaty: {
                 title: 'Наш офис в Алматы',
                 address: 'г. Алматы, ул. Римского-Корсакова, 19а',
-                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=76.9286%2C43.2567&z=16&l=map&pt=76.9286%2C43.2567%2Cpm2rdm'
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=76.928020%2C43.233360&z=16&l=map&pt=76.928020%2C43.233360%2Cpm2rdm'
             },
             astana: {
                 title: 'Наш офис в Астане',
-                address: 'г. Астана, ул. Сыганак, 29',
-                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=71.434274%2C51.123097&z=16&l=map&pt=71.434274%2C51.123097%2Cpm2rdm'
+                address: 'г. Астана, Адырна 15',
+                mapUrl: 'https://yandex.ru/map-widget/v1/?ll=71.432298%2C51.138313&z=16&l=map&pt=71.432298%2C51.138313%2Cpm2rdm'
             }
         };
 
