@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     galleryActionButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Номер WhatsApp
-        const whatsappNumber = '77766502960';
+        const whatsappNumber = '77470969648';
             // Сообщение для WhatsApp
             const message = 'Здравствуйте! Хочу заказать уборку как на фото в разделе "До и После". Можете рассчитать стоимость?';
             // Создаем ссылку на WhatsApp
