@@ -128,6 +128,22 @@
     color: var(--primary-dark);
     font-weight: 700;
 }
+
+/* Специальный алый фон для выделенного слота с 25% скидкой */
+.time-slot.selected[data-discount="25"] {
+    background: linear-gradient(145deg, #ff6b6b, #e74c3c);
+    border-color: #c0392b;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Специальный оранжевый фон для выделенного слота с ограниченными местами */
+.time-slot.selected.limited {
+    background: linear-gradient(145deg, #ffd54f, #f0c042);
+    border-color: #e0a82e;
+    color: #8b4513;
+    font-weight: 700;
+}
 /* Hero Slot Occupancy */
 .hero .selection-wrapper .time-slot {
     position: relative;
@@ -204,11 +220,7 @@
     box-shadow: 0 2px 6px rgba(255, 159, 67, 0.3);
 }
 
-/* Жёлтый для 5% */
-.hero .selection-wrapper .time-slot[data-discount="5"] .slot-discount {
-    background: linear-gradient(135deg, #ffd166, #f9a825);
-    box-shadow: 0 2px 6px rgba(255, 209, 102, 0.3);
-}
+
 
 /* Алый для 25% */
 .hero .selection-wrapper .time-slot[data-discount="25"] .slot-discount {
@@ -295,4 +307,25 @@
     .hero .selection-wrapper .time-slot.limited .slot-note {
         font-size: 0.55rem;
     }
+}
+
+/* Пульсирующая анимация для слота с 25% скидкой */
+@keyframes pulse-discount-outline {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4);
+        border: 2px solid rgba(255, 71, 87, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(255, 71, 87, 0.1);
+        border: 2px solid rgba(255, 71, 87, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.0);
+        border: 2px solid rgba(255, 71, 87, 0.3);
+    }
+}
+
+.hero .selection-wrapper .time-slot[data-discount="25"] {
+    animation: pulse-discount-outline 2.5s ease-in-out infinite;
+    border-radius: 12px;
 }

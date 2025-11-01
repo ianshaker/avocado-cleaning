@@ -103,7 +103,6 @@ class TelegramIntegration {
 
 📱 <b>Телефон:</b> <code>${packageData.phone}</code>
 📐 <b>Площадь:</b> ${packageData.area} кв.м
-🏠 <b>Комнаты:</b> ${packageData.rooms}
 🏢 <b>Тип недвижимости:</b> ${packageData.propertyType}
 🧹 <b>Тип уборки:</b> ${packageData.cleaningType}
 ➕ <b>Дополнительные услуги:</b> ${additionalServicesText}

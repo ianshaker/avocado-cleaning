@@ -1,0 +1,193 @@
+/* Progressive Logo Loading Styles */
+
+.progressive-logo {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    will-change: opacity, transform;
+}
+
+/* Состояния загрузки */
+.progressive-logo.loading-light {
+    opacity: 0.6;
+    animation: pulse-loading 1.5s infinite ease-in-out;
+}
+
+.progressive-logo.loading-full {
+    position: relative;
+}
+
+.progressive-logo.loading-full::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        transparent 100%);
+    animation: shimmer 2s infinite;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Анимации */
+@keyframes pulse-loading {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Состояния успешной загрузки */
+.progressive-logo.light-loaded {
+    opacity: 1;
+    filter: blur(0.5px); /* Легкое размытие для легкой версии */
+}
+
+.progressive-logo.full-loaded {
+    opacity: 1;
+    filter: none; /* Четкое изображение для полной версии */
+}
+
+/* Состояния ошибок */
+.progressive-logo.light-error,
+.progressive-logo.full-error {
+    opacity: 0.7;
+    filter: grayscale(0.3);
+}
+
+/* Оптимизация для floating-logo */
+.floating-logo.progressive-logo {
+    /* Сохраняем существующие стили floating-logo */
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 100px;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 30px rgba(26, 94, 26, 0.3));
+}
+
+.floating-logo.progressive-logo.loading-light {
+    /* Во время загрузки легкой версии */
+    animation: float 6s ease-in-out infinite, pulse-loading 1.5s infinite ease-in-out;
+}
+
+.floating-logo.progressive-logo.light-loaded {
+    /* Легкая версия загружена */
+    filter: drop-shadow(0 10px 30px rgba(26, 94, 26, 0.3)) blur(0.5px);
+}
+
+.floating-logo.progressive-logo.full-loaded {
+    /* Полная версия загружена */
+    filter: drop-shadow(0 10px 30px rgba(26, 94, 26, 0.3));
+}
+
+/* Оптимизация для footer-logo */
+.footer-logo.progressive-logo {
+    max-height: 60px;
+    width: auto;
+}
+
+/* Responsive оптимизации */
+@media (max-width: 768px) {
+    .floating-logo.progressive-logo {
+        max-width: 280px;
+        margin-top: 40px;
+    }
+    
+    .floating-logo.progressive-logo.loading-light {
+        animation: float 6s ease-in-out infinite, pulse-loading 1.5s infinite ease-in-out;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-logo.progressive-logo {
+        max-width: 220px;
+        margin-top: 30px;
+    }
+}
+
+/* Prefers-reduced-motion поддержка */
+@media (prefers-reduced-motion: reduce) {
+    .progressive-logo {
+        animation: none !important;
+        transition: opacity 0.2s ease;
+    }
+    
+    .progressive-logo.loading-light {
+        animation: none;
+        opacity: 0.8;
+    }
+    
+    .progressive-logo.loading-full::after {
+        animation: none;
+        display: none;
+    }
+}
+
+/* Высокая производительность для критических логотипов */
+.progressive-logo.critical {
+    /* Приоритет загрузки для критически важных логотипов */
+    content-visibility: auto;
+    contain: layout style paint;
+}
+
+/* Индикатор качества изображения */
+.progressive-logo.light-loaded::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background: #ffc107;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 10;
+    animation: fade-out 3s ease-out forwards;
+}
+
+.progressive-logo.full-loaded::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background: #28a745;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 10;
+    animation: fade-out 2s ease-out forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 0.7;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Скрываем индикаторы в продакшене */
+.production .progressive-logo::before {
+    display: none;
+}

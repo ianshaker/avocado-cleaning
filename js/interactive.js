@@ -10,7 +10,6 @@ class InteractiveManager {
         this.selectedServices = [];
         this.selectedPropertyType = null;
         this.selectedCleaningType = null;
-        this.roomCount = 1;
     }
 
     init() {
@@ -20,7 +19,6 @@ class InteractiveManager {
         this.initCompactServices();
         this.initPropertyTypeSelection();
         this.initCleaningTypeSelection();
-        this.initRoomCounter();
         this.initPackageButtons();
         this.initSubscriptionButton();
     }
@@ -157,35 +155,7 @@ class InteractiveManager {
         });
     }
 
-    /**
-     * Инициализация счетчика комнат
-     */
-    initRoomCounter() {
-        const roomCounterContainer = document.querySelector('.room-counter-compact');
-        if (!roomCounterContainer) {
-            return;
-        }
-        
-        const decreaseBtn = document.getElementById('rooms-minus');
-        const increaseBtn = document.getElementById('rooms-plus');
-        const countDisplay = document.getElementById('total-rooms');
-        
-        if (decreaseBtn) {
-            decreaseBtn.addEventListener('click', () => {
-                if (this.roomCount > 1) {
-                    this.roomCount--;
-                    countDisplay.textContent = this.roomCount;
-                }
-            });
-        }
-        
-        if (increaseBtn) {
-            increaseBtn.addEventListener('click', () => {
-                this.roomCount++;
-                countDisplay.textContent = this.roomCount;
-            });
-        }
-    }
+
 
     /**
      * Получение выбранного города
@@ -236,12 +206,7 @@ class InteractiveManager {
         return this.selectedCleaningType;
     }
 
-    /**
-     * Получение общего количества комнат
-     */
-    getTotalRooms() {
-        return this.roomCount;
-    }
+
 
     /**
      * Сброс всех выборов
@@ -267,12 +232,7 @@ class InteractiveManager {
         document.querySelectorAll('.cleaning-type-btn-compact').forEach(btn => btn.classList.remove('active'));
         this.selectedCleaningType = null;
         
-        // Сброс счетчика комнат
-        this.roomCount = 1;
-        const countDisplay = document.querySelector('#total-rooms');
-        if (countDisplay) {
-            countDisplay.textContent = this.roomCount;
-        }
+
         
         console.log('Все выборы сброшены');
     }
@@ -302,13 +262,7 @@ class InteractiveManager {
                 const cleaningBtn = document.querySelector(`[data-cleaning="${value}"]`);
                 if (cleaningBtn) cleaningBtn.click();
                 break;
-            case 'rooms':
-                this.roomCount = parseInt(value) || 1;
-                const countDisplay = document.querySelector('.room-count');
-                if (countDisplay) {
-                    countDisplay.textContent = this.roomCount;
-                }
-                break;
+
         }
     }
 
@@ -327,8 +281,19 @@ class InteractiveManager {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // Открываем WhatsApp с предзаполненным сообщением
-                const message = encodeURIComponent('Здравствуйте! Меня интересует один из ваших пакетов услуг клининга. Хотел бы обсудить мой случай.');
+                let message;
+                
+                // Проверяем, является ли кнопка частью секции химчистки
+                if (button.classList.contains('dry-cleaning-button')) {
+                    // Находим заголовок услуги химчистки
+                    const serviceCard = button.closest('.dry-cleaning-card');
+                    const serviceTitle = serviceCard ? serviceCard.querySelector('.dry-cleaning-title').textContent : 'химчистка';
+                    message = encodeURIComponent(`Здравствуйте! Меня интересует услуга "${serviceTitle}". Хотел бы обсудить мой случай и узнать стоимость.`);
+                } else {
+                    // Стандартное сообщение для пакетных услуг
+                    message = encodeURIComponent('Здравствуйте! Меня интересует один из ваших пакетов услуг клининга. Хотел бы обсудить мой случай.');
+                }
+                
                 const whatsappUrl = `https://wa.me/77470969648?text=${message}`;
                 
                 // Открываем в новой вкладке

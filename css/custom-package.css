@@ -62,20 +62,21 @@
 }
 
 .property-type-btn {
-    padding: 4px 8px; /* Уменьшено с 6px 12px */
+    padding: 0 8px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px; /* Уменьшено с 15px */
+    border-radius: 12px;
     color: #ffffff;
-    font-size: 11px; /* Уменьшено с 12px */
+    font-size: 11px;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     white-space: nowrap;
-    min-height: 28px; /* Уменьшено с 32px */
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .property-type-btn:hover {
@@ -95,24 +96,7 @@
     transform: translateY(0);
 }
 
-/* Room Counter Styles - Single Counter */
-.room-counter-single {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0; /* Уменьшено с 20px */
-}
 
-.room-counter-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px; /* Уменьшено с 15px */
-    padding: 15px; /* Уменьшено с 20px */
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    min-width: 220px; /* Уменьшено с 250px */
-}
 
 .room-label-main {
     font-size: 14px; /* Уменьшено с 16px */
@@ -483,7 +467,7 @@
 
 .custom-row-horizontal {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     gap: 20px;
 }
 
@@ -491,8 +475,18 @@
     flex: 1;
 }
 
-.custom-row-horizontal .room-counter-compact {
+
+
+.custom-row-horizontal .discount-tile {
     flex-shrink: 0;
+    margin: 0;
+}
+
+.area-rooms-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex: 1;
 }
 
 
@@ -541,13 +535,17 @@
 
 .custom-input-group input {
     width: 100%;
-    padding: 12px 16px;
+    height: 72px;
+    padding: 0 16px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
     border-radius: 16px;
     font-size: 14px;
     color: #2d5a3d;
     transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
 .custom-input-group input:focus {
@@ -561,6 +559,49 @@
     color: rgba(45, 90, 61, 0.6);
 }
 
+/* Area input wrapper styles */
+.area-input-wrapper {
+    position: relative;
+}
+
+.area-input-wrapper input {
+    padding-right: 120px; /* Space for suffix */
+}
+
+.area-suffix {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(45, 90, 61, 0.7);
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.room-estimation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    padding: 8px 12px;
+    background: rgba(39, 174, 96, 0.1);
+    border-radius: 8px;
+    font-size: 12px;
+    color: #2d5a3d;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.room-estimation.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Updated Property Type Buttons for Blur Section */
 .custom-unified-content .property-type-buttons {
     display: grid;
@@ -569,7 +610,7 @@
 }
 
 .custom-unified-content .property-type-btn {
-    padding: 10px 12px;
+    padding: 0 12px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
     border-radius: 16px;
@@ -579,6 +620,11 @@
     text-align: center;
     font-weight: 500;
     color: #2d5a3d;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .custom-unified-content .property-type-btn:hover {
@@ -595,61 +641,28 @@
     box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
 }
 
-/* Compact Room Counter */
-.room-counter-compact {
-    margin-bottom: 16px;
+
+
+/* Desktop equal height tiles */
+@media (min-width: 769px) {
+    
+    /* Discount tile adjustments for equal height */
+    .custom-row-horizontal .discount-tile {
+        padding: 16px !important;
+        margin: 12px 0 0 0 !important;
+        box-sizing: border-box;
+        height: 72px !important;
+    }
+    
+    .custom-row-horizontal .discount-content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
 }
 
-.room-label-compact {
-    display: block;
-    font-weight: 600;
-    color: #2d5a3d;
-    margin-bottom: 10px;
-    font-size: 13px;
-    text-shadow: none;
-}
 
-.counter-controls-compact {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
-    border-radius: 16px;
-    padding: 10px 14px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.counter-btn-compact {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: #27ae60;
-    color: white;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 3px 10px rgba(39, 174, 96, 0.3);
-}
-
-.counter-btn-compact:hover {
-    background: #219a52;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
-}
-
-.counter-value-compact {
-    font-size: 16px;
-    font-weight: 700;
-    color: #2d5a3d;
-    min-width: 20px;
-    text-align: center;
-}
 
 /* Compact Cleaning Type */
 .cleaning-type-compact label {
@@ -1015,9 +1028,32 @@
         padding: 20px;
     }
     
-    .room-counter {
-        padding: 10px 12px;
+    .custom-row-horizontal {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
     }
+    
+    .area-rooms-wrapper {
+        gap: 15px;
+    }
+    
+    .area-rooms-wrapper .custom-input-group {
+        flex: 1;
+    }
+    
+
+    
+    .custom-row-horizontal .discount-tile {
+        align-self: stretch;
+        margin-top: 10px;
+        width: 100% !important;
+        max-width: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+
     
     .counter-btn {
         width: 28px;

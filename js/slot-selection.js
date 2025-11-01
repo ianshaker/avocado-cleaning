@@ -157,7 +157,12 @@ class SlotSelection {
      * @param {Object} slotData - Данные выбранного слота
      */
     onSlotSelected(slotData) {
-        console.log('Выбран слот:', slotData);
+        console.log('🎯 Выбран слот:', slotData);
+        
+        // Обновляем текст кнопки с информацией о скидке
+        this.updateButtonText(slotData.discount);
+        
+
         
         // Здесь можно добавить дополнительную логику:
         // - Обновление формы
@@ -172,12 +177,31 @@ class SlotSelection {
     }
 
     /**
+     * Обновление текста кнопки с информацией о скидке
+     * @param {number} discount - Размер скидки
+     */
+    updateButtonText(discount) {
+        const button = document.querySelector('.hero-cta-button');
+        if (!button) return;
+
+        const baseText = 'Беру слот';
+        
+        if (discount > 0) {
+            button.innerHTML = `${baseText} <span class="discount-info">(минус ${discount}%)</span>`;
+        } else {
+            button.textContent = baseText;
+        }
+    }
+
+    /**
      * Получение данных выбранного слота
      * @returns {Object|null} Данные выбранного слота или null
      */
     getSelectedSlot() {
         return this.selectedSlotData || null;
     }
+
+
 
     /**
      * Сброс выбора
@@ -222,6 +246,22 @@ class SlotSelection {
                 }
             });
         });
+        
+        // Автоматически выбираем слот с 25% скидкой после рендера
+        this.autoSelectDiscountSlot();
+    }
+
+    /**
+     * Автоматический выбор слота с 25% скидкой при загрузке страницы
+     */
+    autoSelectDiscountSlot() {
+        // Ищем слот с 25% скидкой
+        const discountSlot = document.querySelector('.hero .selection-wrapper .time-slot[data-discount="25"]');
+        
+        if (discountSlot && !this.selectedSlot) {
+            // Выбираем слот только если еще ничего не выбрано
+            this.selectSlot(discountSlot);
+        }
     }
 
     // Генерация детерминированного расписания для города
@@ -236,7 +276,7 @@ class SlotSelection {
             1: [0, 1],    // второй день: первый и средний
             2: [0, 1, 2]  // третий день: все свободны
         };
-        const discountMap = { 0: 25, 1: 10, 2: 5 };
+        const discountMap = { 0: 25, 1: 10, 2: 0 };
 
         const useMap = city === 'astana' ? freeMapAstana : freeMapAlmaty;
 

@@ -14,8 +14,10 @@
 
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="css/custom-package.css">
+    <link rel="stylesheet" href="css/dry-cleaning.css">
     <link rel="stylesheet" href="css/property-types.css">
     <link rel="stylesheet" href="css/before-after-gallery.css">
+    <link rel="stylesheet" href="css/promo-offer.css">
     <link rel="stylesheet" href="css/benefits.css">
     <link rel="stylesheet" href="css/subscription.css">
     <link rel="stylesheet" href="css/reviews.css">
@@ -24,6 +26,8 @@
     <link rel="stylesheet" href="css/top-bar.css">
     <link rel="stylesheet" href="css/lazy-loading.css">
     <link rel="stylesheet" href="css/chrome-optimizations.css">
+    <link rel="stylesheet" href="css/discount-tile.css">
+    <link rel="stylesheet" href="css/progressive-logo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -146,7 +150,11 @@
                 </div>
 
                 <div class="hero-image">
-                    <img src="images/placeholder.svg" data-src="media/logo/logo.png" alt="AvocadoCleaning" class="floating-logo">
+                    <img src="images/placeholder.svg" 
+                         data-light-src="media/logo/logolight.png" 
+                         data-full-src="media/logo/logo.png" 
+                         alt="AvocadoCleaning" 
+                         class="floating-logo progressive-logo critical">
                 </div>
             </div>
             </div> <!-- End Green Container Wrapper -->
@@ -313,6 +321,42 @@
         </div>
     </section>
 
+    <!-- Promo Section -->
+    <section id="promo-offer" class="promo-offer">
+        <div class="container">
+            <div class="promo-container">
+                <div class="promo-image">
+                    <img src="images/placeholder.svg" data-src="media/promo/promonew.jpg" alt="Супер предложение" class="promo-img">
+                    </div>
+                    <div class="promo-content">
+                        <div class="promo-badge">ПРЕДЛОЖЕНИЕ ДНЯ</div>
+                    <h2 class="promo-title" id="promo-date">Актуально на <span id="current-date"></span></h2>
+                    <p class="promo-description">Моем каждое третье окно <span class="promo-highlight">БЕСПЛАТНО</span></p>
+                    
+                    <div class="promo-timer" id="promo-timer">
+                        <div class="timer-item">
+                            <span class="timer-value" id="hours">00</span>
+                            <span class="timer-label">часов</span>
+                        </div>
+                        <div class="timer-separator">:</div>
+                        <div class="timer-item">
+                            <span class="timer-value" id="minutes">00</span>
+                            <span class="timer-label">минут</span>
+                        </div>
+                        <div class="timer-separator">:</div>
+                        <div class="timer-item">
+                            <span class="timer-value" id="seconds">00</span>
+                            <span class="timer-label">секунд</span>
+                        </div>
+                        <div class="timer-action">
+                            <a href="https://wa.me/77772282828?text=Хочу%20воспользоваться%20предложением%20дня!" class="timer-button" target="_blank">БЕРУ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
@@ -426,19 +470,29 @@
                 <div class="custom-package">
                 <!-- Main Content Section -->
                 <div class="custom-unified-content">
-                    <!-- First Row: Area Input and Room Counter -->
+                    <!-- First Row: Area Input, Room Counter, and Discount Tile -->
                     <div class="custom-row custom-row-horizontal">
-                        <div class="custom-input-group">
-                            <label for="area">Площадь (кв.м)</label>
-                            <input type="number" id="area" placeholder="Комнаты" min="1" max="500">
+                        <div class="area-rooms-wrapper">
+                            <div class="custom-input-group">
+                                <label for="area">Площадь (кв.м)</label>
+                                <div class="area-input-wrapper">
+                                    <input type="number" id="area" placeholder="Введите площадь" min="1" max="500">
+                                    <span class="area-suffix">кв. метров</span>
+                                    <div class="room-estimation" id="room-estimation"></div>
+                                </div>
+                            </div>
+                            
+
                         </div>
                         
-                        <div class="room-counter-compact">
-                            <span class="room-label-compact">Комнаты</span>
-                            <div class="counter-controls-compact">
-                                <button type="button" class="counter-btn-compact minus" id="rooms-minus">-</button>
-                                <span class="counter-value-compact" id="total-rooms">1</span>
-                                <button type="button" class="counter-btn-compact plus" id="rooms-plus">+</button>
+                        <!-- Discount Tile -->
+                        <div id="discount-tile" class="discount-tile">
+                            <div class="discount-content">
+                                <div class="discount-icon">%</div>
+                                <div class="discount-text">
+                                    <span class="discount-label">Ваша скидка</span>
+                                    <span class="discount-percentage" id="discount-percentage">3%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -544,13 +598,86 @@
                     </div>
                     <div class="custom-footer-right">
                         <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required class="custom-phone-input-new">
-                        <button class="package-button custom-package-button-new">Отправить на просчет</button>
+                        <button class="package-button custom-package-button-new">Зафиксировать 17%</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Dry Cleaning Section -->
+    <section id="dry-cleaning" class="dry-cleaning">
+        <div class="container">
+            <h2 class="section-title">ХИМЧИСТКА</h2>
+            <div class="dry-cleaning-grid">
+                <!-- Чистка диванов -->
+                <div class="dry-cleaning-card">
+                    <div class="dry-cleaning-image">
+                        <img src="images/placeholder.svg" data-src="media/himclean/divan.jpg" alt="Чистка диванов" class="dry-cleaning-img">
+                    </div>
+                    <div class="dry-cleaning-content">
+                        <h3 class="dry-cleaning-title">Чистка диванов</h3>
+                        <ul class="dry-cleaning-features">
+                            <li>Глубокая очистка обивки</li>
+                            <li>Удаление пятен и запахов</li>
+                            <li>Безопасные эко-средства</li>
+                            <li>Быстрое высыхание</li>
+                        </ul>
+                        <div class="dry-cleaning-button-container">
+                            <button class="package-button dry-cleaning-button">Мой случай</button>
+                            <a href="https://wa.me/77470969648" class="package-whatsapp-icon" aria-label="WhatsApp" target="_blank">
+                                <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Чистка ковров -->
+                <div class="dry-cleaning-card">
+                    <div class="dry-cleaning-image">
+                        <img src="images/placeholder.svg" data-src="media/himclean/kover.jpg" alt="Чистка ковров" class="dry-cleaning-img">
+                    </div>
+                    <div class="dry-cleaning-content">
+                        <h3 class="dry-cleaning-title">Чистка ковров</h3>
+                        <ul class="dry-cleaning-features">
+                            <li>Профессиональное оборудование</li>
+                            <li>Восстановление цвета</li>
+                            <li>Антибактериальная обработка</li>
+                            <li>Устранение аллергенов</li>
+                        </ul>
+                        <div class="dry-cleaning-button-container">
+                            <button class="package-button dry-cleaning-button">Мой случай</button>
+                            <a href="https://wa.me/77470969648" class="package-whatsapp-icon" aria-label="WhatsApp" target="_blank">
+                                <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Чистка штор -->
+                <div class="dry-cleaning-card">
+                    <div class="dry-cleaning-image">
+                        <img src="images/placeholder.svg" data-src="media/himclean/htory.jpg" alt="Чистка штор" class="dry-cleaning-img">
+                    </div>
+                    <div class="dry-cleaning-content">
+                        <h3 class="dry-cleaning-title">Чистка штор</h3>
+                        <ul class="dry-cleaning-features">
+                            <li>Деликатная обработка тканей</li>
+                            <li>Сохранение формы и цвета</li>
+                            <li>Снятие и развешивание</li>
+                            <li>Удаление пыли и загрязнений</li>
+                        </ul>
+                        <div class="dry-cleaning-button-container">
+                            <button class="package-button dry-cleaning-button">Мой случай</button>
+                            <a href="https://wa.me/77470969648" class="package-whatsapp-icon" aria-label="WhatsApp" target="_blank">
+                                <img src="images/placeholder.svg" data-src="media/social/whatsapp.png" alt="WhatsApp">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Property Types Section -->
     <section id="property-types" class="property-types">
@@ -951,7 +1078,7 @@
                         </svg>
                         <div>
                             <strong>Режим работы:</strong>
-                            <p>Круглосуточно, без выходных</p>
+                            <p>с 8 утра до 22 вечера ежедневно</p>
                         </div>
                     </div>
                 </div>
@@ -970,7 +1097,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <img src="images/placeholder.svg" data-src="media/logo/logo.png" alt="AvocadoCleaning" class="footer-logo">
+                    <img src="images/placeholder.svg" 
+                         data-light-src="media/logo/logolight.png" 
+                         data-full-src="media/logo/logo.png" 
+                         alt="AvocadoCleaning" 
+                         class="footer-logo progressive-logo">
                     <p class="footer-description">Профессиональная уборка с заботой о вашем здоровье и комфорте</p>
                 </div>
                 <div class="footer-column">
@@ -1014,6 +1145,7 @@
     <!-- JavaScript модули -->
 
     <script src="js/telegram-integration.js"></script>
+    <script src="js/discount-manager.js"></script>
     <script src="js/forms.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/interactive.js"></script>
@@ -1021,7 +1153,35 @@
 <script src="js/slot-selection.js?v=4"></script>
 <script src="js/before-after-gallery.js"></script>
     <script src="js/property-gallery.js"></script>
+    <script src="js/progressive-logo.js?v=2"></script>
+    <script>
+        // Fallback для прогрессивной загрузки логотипов
+        setTimeout(() => {
+            const progressiveLogos = document.querySelectorAll('.progressive-logo');
+            progressiveLogos.forEach(logo => {
+                if (logo.src.includes('placeholder.svg')) {
+                    console.log('🔄 Fallback: Loading logo directly');
+                    const lightSrc = logo.dataset.lightSrc;
+                    if (lightSrc) {
+                        logo.src = lightSrc;
+                        logo.classList.add('light-loaded');
+                        
+                        // Через 1 секунду загружаем полную версию
+                        setTimeout(() => {
+                            const fullSrc = logo.dataset.fullSrc;
+                            if (fullSrc) {
+                                logo.src = fullSrc;
+                                logo.classList.remove('light-loaded');
+                                logo.classList.add('full-loaded');
+                            }
+                        }, 1000);
+                    }
+                }
+            });
+        }, 2000); // Ждем 2 секунды, если прогрессивная загрузка не сработала
+    </script>
     <script src="js/lazy-loading.js"></script>
+    <script src="js/promo-timer.js"></script>
     <script src="js/main.js"></script>
 
     <!-- Yandex.Metrika counter -->

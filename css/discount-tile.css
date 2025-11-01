@@ -1,0 +1,280 @@
+/* ========================================
+   DISCOUNT TILE STYLES
+   Dynamic discount display for custom package
+   ======================================== */
+
+.discount-tile {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    box-shadow: 0 4px 20px rgba(39, 174, 96, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-width: 280px;
+    width: fit-content;
+}
+
+
+
+.discount-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.discount-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+@keyframes gentle-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+}
+
+.discount-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.discount-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.discount-percentage {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Динамические цвета в зависимости от размера скидки */
+.discount-tile.discount-low .discount-percentage {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.discount-tile.discount-medium .discount-percentage {
+    color: #fff3cd;
+    text-shadow: 0 0 15px rgba(255, 243, 205, 0.5);
+    font-size: 26px;
+}
+
+.discount-tile.discount-high .discount-percentage {
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    font-size: 28px;
+    animation: golden-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes golden-glow {
+    0% { 
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        transform: scale(1);
+    }
+    100% { 
+        text-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+        transform: scale(1.02);
+    }
+}
+
+/* Обновляем цвета плитки для разных уровней */
+.discount-tile.discount-medium {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.discount-tile.discount-high {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.discount-details {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.discount-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.discount-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.discount-item-label {
+    font-weight: 500;
+}
+
+.discount-item-value {
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* Анимация появления новых элементов */
+.discount-item {
+    animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Пульсация при изменении скидки */
+.discount-percentage.updating {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .discount-tile {
+        padding: 16px;
+        margin: 16px 0;
+    }
+    
+    .discount-content {
+        gap: 12px;
+    }
+    
+    .discount-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .discount-percentage {
+        font-size: 28px;
+    }
+    
+    .discount-label {
+        font-size: 13px;
+    }
+    
+    .discount-item {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .discount-tile {
+        padding: 14px;
+        margin: 14px 0;
+    }
+    
+    .discount-content {
+        gap: 10px;
+    }
+    
+    .discount-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .discount-text {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .discount-percentage {
+        font-size: 24px;
+        order: 1;
+    }
+    
+    .discount-label {
+        font-size: 12px;
+        order: 2;
+    }
+    
+    .discount-details {
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+    
+    .discount-breakdown {
+        gap: 6px;
+    }
+    
+    .discount-item {
+        font-size: 11px;
+    }
+    
+    .discount-item-value {
+        font-size: 11px;
+        padding: 1px 6px;
+    }
+}
+
+/* Интеграция с существующими стилями custom package */
+.custom-unified-content .discount-tile {
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+/* Темная тема совместимость */
+@media (prefers-color-scheme: dark) {
+    .discount-tile {
+        box-shadow: 0 8px 32px rgba(39, 174, 96, 0.4);
+    }
+    
+    .discount-icon {
+        background: rgba(255, 255, 255, 0.25);
+    }
+    
+    .discount-item-value {
+        background: rgba(255, 255, 255, 0.25);
+    }
+}

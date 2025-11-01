@@ -10,6 +10,8 @@ class App {
         this.interactiveManager = null;
         this.utils = null;
         this.slotSelection = null;
+        this.discountManager = null;
+        this.promoTimer = null;
     }
 
     /**
@@ -22,6 +24,8 @@ class App {
         this.interactiveManager = new InteractiveManager();
         this.utils = new Utils();
         this.slotSelection = new SlotSelection();
+        this.discountManager = new DiscountManager();
+        this.promoTimer = new PromoTimer();
 
         // Запускаем инициализацию модулей
         this.formsManager.init();
@@ -29,6 +33,8 @@ class App {
         this.interactiveManager.init();
         this.utils.init();
         this.slotSelection.init();
+        this.discountManager.init();
+        this.promoTimer.init();
 
         // Инициализируем переключатель городов
         this.initLocationSwitcher();
@@ -77,13 +83,7 @@ class App {
             return null;
         };
 
-        // Функция получения общего количества комнат
-        window.getTotalRooms = () => {
-            if (this.interactiveManager) {
-                return this.interactiveManager.getTotalRooms();
-            }
-            return 1;
-        };
+
 
         // Делаем slotSelection доступным глобально
         window.slotSelection = this.slotSelection;
