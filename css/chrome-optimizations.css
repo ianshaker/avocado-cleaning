@@ -110,14 +110,15 @@ html {
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     /* Только для WebKit браузеров (Chrome, Safari) */
     
-    /* Принудительное включение hardware acceleration */
+    /* ОТКЛЮЧЕНО: Принудительное включение hardware acceleration */
+    /* Это правило ломает position: fixed! */
+    /*
     * {
         -webkit-transform: translateZ(0);
         -webkit-backface-visibility: hidden;
         -webkit-perspective: 1000;
     }
-    
-
+    */
     
     /* Фикс для анимированных элементов */
     [class*="animation"],

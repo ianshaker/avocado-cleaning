@@ -28,11 +28,23 @@
     <link rel="stylesheet" href="css/chrome-optimizations.css">
     <link rel="stylesheet" href="css/discount-tile.css">
     <link rel="stylesheet" href="css/progressive-logo.css">
+    <link rel="stylesheet" href="css/consultant-widget.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- SVG Sprite для иконок -->
+    <svg style="display: none;" aria-hidden="true">
+        <defs>
+            <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
+            <symbol id="icon-location" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </symbol>
+        </defs>
+    </svg>
 
     <!-- Top Bar -->
     <div class="top-bar">
@@ -85,12 +97,12 @@
                     <div class="city-selector">
                         <div class="selector-tile city-tile active" data-city="almaty">
                             <svg class="location-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                <use href="#icon-location"></use>
                             </svg>Алматы
                         </div>
                         <div class="selector-tile city-tile" data-city="astana">
                             <svg class="location-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                <use href="#icon-location"></use>
                             </svg>Астана
                         </div>
                     </div>
@@ -964,8 +976,8 @@
                         <img src="images/placeholder.svg" data-src="media/reviews/review-1.jpg" alt="Отзыв клиента 1" class="review-image">
                     </div>
                     <div class="review-badge">
-                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg class="badge-icon">
+                            <use href="#icon-check-circle"></use>
                         </svg>
                         Проверенный отзыв
                     </div>
@@ -976,8 +988,8 @@
                         <img src="images/placeholder.svg" data-src="media/reviews/review-2.jpg" alt="Отзыв клиента 2" class="review-image">
                     </div>
                     <div class="review-badge">
-                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg class="badge-icon">
+                            <use href="#icon-check-circle"></use>
                         </svg>
                         Проверенный отзыв
                     </div>
@@ -988,8 +1000,8 @@
                         <img src="images/placeholder.svg" data-src="media/reviews/review-3.jpg" alt="Отзыв клиента 3" class="review-image">
                     </div>
                     <div class="review-badge">
-                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg class="badge-icon">
+                            <use href="#icon-check-circle"></use>
                         </svg>
                         Проверенный отзыв
                     </div>
@@ -1000,8 +1012,8 @@
                         <img src="images/placeholder.svg" data-src="media/reviews/review-4.jpg" alt="Отзыв клиента 4" class="review-image">
                     </div>
                     <div class="review-badge">
-                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg class="badge-icon">
+                            <use href="#icon-check-circle"></use>
                         </svg>
                         Проверенный отзыв
                     </div>
@@ -1012,8 +1024,8 @@
                         <img src="images/placeholder.svg" data-src="media/reviews/review-5.jpg" alt="Отзыв клиента 5" class="review-image">
                     </div>
                     <div class="review-badge">
-                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg class="badge-icon">
+                            <use href="#icon-check-circle"></use>
                         </svg>
                         Проверенный отзыв
                     </div>
@@ -1024,8 +1036,8 @@
                         <img src="images/placeholder.svg" data-src="media/reviews/review-6.jpg" alt="Отзыв клиента 6" class="review-image">
                     </div>
                     <div class="review-badge">
-                        <svg class="badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg class="badge-icon">
+                            <use href="#icon-check-circle"></use>
                         </svg>
                         Проверенный отзыв
                     </div>
@@ -1154,6 +1166,7 @@
 <script src="js/before-after-gallery.js"></script>
     <script src="js/property-gallery.js"></script>
     <script src="js/progressive-logo.js?v=2"></script>
+    <script src="js/consultant-widget.js"></script>
     <script>
         // Fallback для прогрессивной загрузки логотипов
         setTimeout(() => {
@@ -1197,6 +1210,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/104762814" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+    
 </body>
 </html>
 

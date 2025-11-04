@@ -1,0 +1,382 @@
+/**
+ * Consultant Widget Styles
+ * Responsive consultation widget with blur background and typing animation
+ */
+
+.consultant-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.consultant-widget.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.consultant-widget-content {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.consultant-widget-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.consultant-message-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.consultant-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.consultant-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.consultant-message {
+    flex: 1;
+    min-width: 0;
+}
+
+.consultant-widget.animate-in {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.consultant-message {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 0;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(0);
+}
+
+.consultant-message.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.consultant-message.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.consultant-message.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.typing-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    vertical-align: baseline;
+    margin-top: 2px;
+}
+
+.typing-dots::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #007AFF;
+    animation: typingDot1 1.4s infinite ease-in-out;
+}
+
+.typing-dots::after {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #007AFF;
+    animation: typingDot3 1.4s infinite ease-in-out;
+    animation-delay: 0.4s;
+}
+
+.typing-dots .dot-middle {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #007AFF;
+    animation: typingDot2 1.4s infinite ease-in-out;
+    animation-delay: 0.2s;
+}
+
+@keyframes typingDot1 {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+@keyframes typingDot2 {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+@keyframes typingDot3 {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+.consultant-reply-btn {
+    background: rgba(0, 122, 255, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 122, 255, 0.5);
+    border-radius: 20px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    white-space: nowrap;
+    box-shadow: 
+        0 4px 20px rgba(0, 122, 255, 0.25),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    min-width: 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.consultant-reply-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.15) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.consultant-reply-btn.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.consultant-reply-btn:hover {
+    background: rgba(0, 122, 255, 1);
+    border-color: rgba(0, 122, 255, 0.7);
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 
+        0 8px 32px rgba(0, 122, 255, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.consultant-reply-btn:active {
+    transform: translateY(0) translateZ(0);
+    box-shadow: 
+        0 2px 8px rgba(0, 122, 255, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .consultant-widget {
+        max-width: 450px;
+        width: 450px;
+        bottom: 30px;
+        right: 30px;
+    }
+    
+    .consultant-widget-content {
+        width: 80%;
+        padding: 24px;
+    }
+    
+    .consultant-reply-btn {
+        width: 20%;
+        padding: 16px 12px;
+        font-size: 14px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .consultant-message {
+         font-size: 14px;
+         line-height: 1.5;
+     }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .consultant-widget {
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        max-width: none;
+        width: auto;
+        padding: 0;
+        flex-direction: row;
+        gap: 8px;
+        align-items: flex-end;
+    }
+    
+    .consultant-widget-content {
+        flex: 1;
+        border-radius: 20px;
+        padding: 14px 16px;
+        min-height: auto;
+    }
+    
+    .consultant-reply-btn {
+        flex-shrink: 0;
+        width: auto;
+        padding: 14px 12px;
+        border-radius: 18px;
+        margin-top: 0;
+        font-size: 13px;
+        min-width: 70px;
+    }
+    
+    .consultant-message {
+        font-size: 13px;
+        text-align: left;
+        margin: 0;
+    }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .consultant-widget-content {
+        background: rgba(28, 28, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.4),
+            0 2px 8px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    
+    .consultant-widget-content::before {
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.08) 0%, 
+            rgba(255, 255, 255, 0.03) 50%, 
+            rgba(255, 255, 255, 0.08) 100%);
+    }
+    
+    .consultant-avatar {
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    
+    .consultant-message {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .consultant-reply-btn {
+        background: rgba(10, 132, 255, 0.9);
+        border: 1px solid rgba(10, 132, 255, 0.5);
+        box-shadow: 
+            0 4px 20px rgba(10, 132, 255, 0.3),
+            0 1px 3px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .consultant-reply-btn:hover {
+        background: rgba(10, 132, 255, 1);
+        border-color: rgba(10, 132, 255, 0.7);
+        box-shadow: 
+            0 8px 32px rgba(10, 132, 255, 0.4),
+            0 4px 12px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}

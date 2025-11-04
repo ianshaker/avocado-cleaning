@@ -1,14 +1,3 @@
-/* Chrome Performance Optimizations */
-* {
-    /* Оптимизация для Chrome - предотвращение мерцания */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -35,15 +24,12 @@ body {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
     background: var(--gray-light);
     /* Chrome оптимизации для устранения мерцания */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    will-change: scroll-position;
-    transform: translateZ(0);
 }
 
 /* Явно применяем Montserrat ко всем текстовым элементам */
