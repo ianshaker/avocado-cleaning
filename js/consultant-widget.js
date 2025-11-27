@@ -8,7 +8,7 @@ class ConsultantWidget {
         this.messageElement = null;
         this.replyButton = null;
         this.messages = [
-            "Здравствуйте! Меня зовут Ян. Готов помочь вам с уборкой.",
+            "Привет! Меня зовут Семён. Готов помочь вам с уборкой.",
             "Если у вас есть вопросы по ценам — я здесь.",
             "Кстати, сегодня моем КАЖДОЕ 3-е окно бесплатно!",
             "Вы хотите уборку в квартире или в офисе?",
@@ -43,7 +43,7 @@ class ConsultantWidget {
             <div class="consultant-widget-content">
                 <div class="consultant-message-container">
                     <div class="consultant-avatar">
-                        <img src="media/avatar/avatar.jpg" alt="Ян - консультант" />
+                        <img src="media/avatar/avatar.jpg" alt="Семён - консультант" />
                     </div>
                     <div class="consultant-message">
                         <span class="typing-text"></span>

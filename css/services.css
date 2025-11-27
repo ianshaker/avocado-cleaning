@@ -787,7 +787,7 @@
 
 @media (max-width: 768px) {
     .green-packages-wrapper {
-        padding: 25px 0;
+        padding: 15px 0 25px 0;
         border-radius: 20px;
         margin-top: 20px;
     }
@@ -795,7 +795,7 @@
 
 @media (max-width: 480px) {
     .green-packages-wrapper {
-        padding: 20px 0;
+        padding: 12px 0 20px 0;
         border-radius: 16px;
     }
     
