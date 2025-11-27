@@ -28,6 +28,13 @@
 .top-bar-left {
     display: flex;
     align-items: center;
+    gap: 12px;
+}
+
+.top-bar-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .top-bar-phone {
@@ -36,17 +43,163 @@
     color: var(--primary-dark);
     text-decoration: none;
     transition: color 0.2s ease;
+    line-height: 1.2;
 }
 
 .top-bar-phone:hover {
     color: var(--primary-medium);
 }
 
+.top-bar-hours {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(108, 117, 125, 0.7);
+    line-height: 1.2;
+}
+
 /* Right Side - Social Icons */
 .top-bar-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+}
+
+.top-bar-instagram-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 14px;
+    position: relative;
+    background: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.top-bar-instagram-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.top-bar-instagram-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.top-bar-instagram-followers-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    line-height: 1;
+    align-items: flex-end;
+}
+
+.top-bar-instagram-followers {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1;
+    position: relative;
+    padding-left: 8px;
+}
+
+.top-bar-instagram-followers::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.top-bar-instagram-followers-label {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: #0095f6;
+    line-height: 1;
+    padding-left: 8px;
+    display: none;
+}
+
+.top-bar-instagram-wrapper::before {
+    display: none;
+}
+
+.top-bar-instagram-wrapper:hover {
+    transform: translateY(-1px);
+}
+
+.top-bar-instagram-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #833AB4 0%, #C13584 25%, #E1306C 50%, #FD1D1D 75%, #FCAF45 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    animation: instagramGradient 4s ease infinite;
+    letter-spacing: 0.3px;
+}
+
+.top-bar-instagram-subscribe {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0095f6;
+    text-decoration: none;
+    line-height: 1;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.top-bar-instagram-subscribe:hover {
+    color: #0084d9;
+    transform: translateY(-1px);
+    text-shadow: 0 1px 3px rgba(0, 149, 246, 0.3);
+}
+
+@keyframes instagramIconPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+@keyframes instagramShine {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+@keyframes instagramGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .social-icon {
@@ -74,6 +227,30 @@
     height: 52px;
 }
 
+/* Instagram иконка */
+.instagram-icon {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    z-index: 1;
+    animation: instagramIconPulse 2s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.instagram-icon:hover {
+    animation: instagramIconPulse 0.8s ease-in-out infinite;
+    transform: scale(1.1);
+}
+
+.instagram-icon img {
+    filter: drop-shadow(0 2px 4px rgba(131, 58, 180, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.instagram-icon:hover img {
+    filter: drop-shadow(0 4px 8px rgba(131, 58, 180, 0.5));
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
     .top-bar-content {
@@ -93,6 +270,11 @@
         width: 46px;
         height: 46px;
     }
+
+    .instagram-icon {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 /* Mobile */
@@ -107,8 +289,68 @@
         border-radius: 15px;
     }
 
+    .top-bar-left {
+        gap: 10px;
+    }
+
     .top-bar-phone {
         font-size: 1.05rem;
+    }
+
+    .top-bar-hours {
+        display: block;
+        font-size: 0.75rem;
+    }
+
+    .top-bar-right .top-bar-instagram-wrapper {
+        display: flex;
+        padding: 6px 10px;
+        gap: 8px;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-content {
+        gap: 0;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-text {
+        display: none;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-stats {
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-subscribe {
+        display: none;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers-wrapper {
+        flex-direction: column;
+        gap: 2px;
+        align-items: flex-end;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers {
+        font-size: 0.75rem;
+        padding-left: 0;
+        text-align: right;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers::before {
+        display: none;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers-label {
+        display: block;
+        font-size: 0.65rem;
+        text-align: right;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .instagram-icon {
+        width: 40px;
+        height: 40px;
     }
 
     .social-icon {
@@ -117,8 +359,13 @@
     }
 
     .whatsapp-icon {
-        width: 68px;
-        height: 68px;
+        width: 54px;
+        height: 54px;
+    }
+
+    .instagram-icon {
+        width: 60px;
+        height: 60px;
     }
 
     .top-bar-right {
@@ -138,8 +385,17 @@
         border-radius: 12px;
     }
 
+    .top-bar-left {
+        gap: 8px;
+    }
+
     .top-bar-phone {
         font-size: 0.95rem;
+    }
+
+    .top-bar-hours {
+        display: block;
+        font-size: 0.7rem;
     }
 
     .social-icon {
@@ -148,8 +404,41 @@
     }
 
     .whatsapp-icon {
-        width: 64px;
-        height: 64px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .instagram-icon {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper {
+        padding: 5px 8px;
+        gap: 6px;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-text {
+        display: none;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers {
+        font-size: 0.6rem;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers {
+        font-size: 0.7rem;
+        text-align: right;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .top-bar-instagram-followers-label {
+        font-size: 0.6rem;
+        text-align: right;
+    }
+    
+    .top-bar-right .top-bar-instagram-wrapper .instagram-icon {
+        width: 36px;
+        height: 36px;
     }
 
     .top-bar-right {

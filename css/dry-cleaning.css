@@ -1,219 +1,687 @@
-/* Dry Cleaning Section Styles */
-.dry-cleaning {
-    display: none; /* Временно скрыто для доработки */
+/* ============================================
+   ХИМЧИСТКА NEW - Premium Dark Section
+   ============================================ */
+
+/* Section Container - Gray background like "Свой пакет" */
+.himclean-section {
+    padding: 50px 0 80px 0;
     background: #f1f5f9;
-    padding: 60px 0;
-    position: relative;
-    overflow: hidden;
 }
 
-.dry-cleaning::before {
-    content: '';
+/* Main Dark Wrapper */
+.himclean-wrapper {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 32px;
+    padding: 60px 50px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 60px rgba(59, 130, 246, 0.12),
+        0 8px 20px rgba(59, 130, 246, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   ANIMATED BUBBLES - More & Faster
+   ============================================ */
+.himclean-bubbles {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
     pointer-events: none;
+    overflow: hidden;
 }
 
-.dry-cleaning .container {
+.himclean-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(159, 220, 124, 0.2), 
+        rgba(159, 220, 124, 0.08) 50%, 
+        transparent 70%);
+    animation: himcleanFloat 4s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* 12 Bubbles with varied sizes and positions */
+.himclean-bubble:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    left: 3%;
+    top: 8%;
+    animation-delay: 0s;
+    animation-duration: 5s;
+}
+
+.himclean-bubble:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    left: 15%;
+    top: 65%;
+    animation-delay: -0.5s;
+    animation-duration: 4s;
+}
+
+.himclean-bubble:nth-child(3) {
+    width: 45px;
+    height: 45px;
+    left: 28%;
+    top: 20%;
+    animation-delay: -1s;
+    animation-duration: 3.5s;
+}
+
+.himclean-bubble:nth-child(4) {
+    width: 80px;
+    height: 80px;
+    left: 40%;
+    top: 75%;
+    animation-delay: -1.5s;
+    animation-duration: 4.5s;
+}
+
+.himclean-bubble:nth-child(5) {
+    width: 35px;
+    height: 35px;
+    left: 55%;
+    top: 12%;
+    animation-delay: -2s;
+    animation-duration: 3s;
+}
+
+.himclean-bubble:nth-child(6) {
+    width: 70px;
+    height: 70px;
+    left: 68%;
+    top: 60%;
+    animation-delay: -0.8s;
+    animation-duration: 4.2s;
+}
+
+.himclean-bubble:nth-child(7) {
+    width: 55px;
+    height: 55px;
+    left: 82%;
+    top: 25%;
+    animation-delay: -1.2s;
+    animation-duration: 3.8s;
+}
+
+.himclean-bubble:nth-child(8) {
+    width: 40px;
+    height: 40px;
+    left: 92%;
+    top: 70%;
+    animation-delay: -2.5s;
+    animation-duration: 4s;
+}
+
+.himclean-bubble:nth-child(9) {
+    width: 50px;
+    height: 50px;
+    left: 8%;
+    top: 40%;
+    animation-delay: -0.3s;
+    animation-duration: 3.2s;
+}
+
+.himclean-bubble:nth-child(10) {
+    width: 65px;
+    height: 65px;
+    left: 48%;
+    top: 45%;
+    animation-delay: -1.8s;
+    animation-duration: 4.8s;
+}
+
+.himclean-bubble:nth-child(11) {
+    width: 30px;
+    height: 30px;
+    left: 75%;
+    top: 85%;
+    animation-delay: -2.2s;
+    animation-duration: 3.5s;
+}
+
+.himclean-bubble:nth-child(12) {
+    width: 75px;
+    height: 75px;
+    left: 22%;
+    top: 85%;
+    animation-delay: -0.7s;
+    animation-duration: 5.2s;
+}
+
+@keyframes himcleanFloat {
+    0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.7;
+    }
+    20% {
+        transform: translateY(-15px) translateX(8px) scale(1.08);
+        opacity: 0.9;
+    }
+    40% {
+        transform: translateY(-8px) translateX(-12px) scale(0.95);
+        opacity: 0.6;
+    }
+    60% {
+        transform: translateY(-20px) translateX(5px) scale(1.05);
+        opacity: 0.85;
+    }
+    80% {
+        transform: translateY(-5px) translateX(-8px) scale(0.98);
+        opacity: 0.75;
+    }
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+.himclean-header {
+    text-align: center;
+    margin-bottom: 50px;
     position: relative;
     z-index: 2;
 }
 
-.dry-cleaning-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 40px;
+.himclean-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 3px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    gap: 15px;
 }
 
-@media (max-width: 992px) {
-    .dry-cleaning-grid {
+.himclean-title-text {
+    text-align: center;
+}
+
+.himclean-new-badge {
+    width: auto;
+    height: 55px;
+    will-change: transform;
+    animation: badgeSway 2s ease-in-out infinite;
+    box-shadow: none;
+    border: none;
+    background: none;
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+}
+
+.himclean-new-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: badgeShine 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes badgeSway {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes badgeShine {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+
+
+/* ============================================
+   ITEMS GRID
+   ============================================ */
+.himclean-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Центрирование и увеличение центрального элемента (шторы) */
+.himclean-item-center {
+    grid-column: 2;
+    justify-self: center;
+    transform: scale(1.1);
+    z-index: 3;
+}
+
+.himclean-item-center .himclean-image {
+    border-radius: 28px;
+    margin-bottom: 20px;
+}
+
+.himclean-item-center .himclean-tile {
+    border-radius: 28px;
+    padding: 40px 30px 30px;
+}
+
+.himclean-item-center .himclean-tile h3 {
+    font-size: 1.5rem;
+}
+
+.himclean-item-center .himclean-tile p {
+    font-size: 1rem;
+}
+
+.himclean-item-center .himclean-button {
+    padding: 16px 40px;
+    font-size: 1rem;
+}
+
+/* ============================================
+   INDIVIDUAL ITEM - Image + Tile Below
+   ============================================ */
+.himclean-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* ============================================
+   STANDALONE IMAGE - No frame, just image, NO SHADOW
+   ============================================ */
+.himclean-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.himclean-item:hover .himclean-image {
+    transform: scale(1.03);
+    box-shadow: none;
+}
+
+/* ============================================
+   TILE - Description & Button Below Image
+   WITH SHADOW AND ROUNDED TOP
+   ============================================ */
+.himclean-tile {
+    width: 100%;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 24px;
+    padding: 35px 25px 25px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.himclean-item:hover .himclean-tile {
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.18) 0%, 
+        rgba(255, 255, 255, 0.08) 100%);
+    border-color: rgba(159, 220, 124, 0.3);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(159, 220, 124, 0.15);
+}
+
+.himclean-tile h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.himclean-tile p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+/* ============================================
+   BUTTON WRAPPER - Container for button and discount
+   ============================================ */
+.himclean-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   DISCOUNT BADGE - Next to button
+   ============================================ */
+.himclean-discount-badge {
+    background: linear-gradient(135deg, #c5e93f 0%, #9fdc7c 50%, #64aa1e 100%);
+    color: #1a5e1a;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 12px;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow: none;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   BUTTON - Inside Tile
+   Blurred design matching tile style
+   No green border/shadow
+   ============================================ */
+.himclean-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 35px;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.08) 100%);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    transform: translateY(0px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Только объёмная тень без зелёной обводки */
+    box-shadow: 
+        /* Глубокая тень для объёма */
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.himclean-button:hover {
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.22) 0%, 
+        rgba(255, 255, 255, 0.12) 100%);
+    border-color: rgba(159, 220, 124, 0.3);
+    transform: translateY(-2px);
+    /* Увеличенный объёмный эффект при наведении */
+    box-shadow: 
+        /* Глубокая тень для объёма */
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.himclean-button:active {
+    transform: translateY(2px);
+    /* Эффект нажатия - уменьшение объёма */
+    box-shadow: 
+        /* Минимальная глубокая тень */
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        /* Внутренняя подсветка */
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .himclean-wrapper {
+        padding: 50px 40px;
+        border-radius: 28px;
+    }
+    
+    .himclean-title {
+        font-size: 2.5rem;
+    }
+    
+    .himclean-grid {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .himclean-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
+    }
+    
+    .himclean-grid .himclean-item:last-child {
+        grid-column: 1 / -1;
+        max-width: 350px;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 768px) {
-    .dry-cleaning-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
+    .himclean-section {
+        padding: 60px 0;
     }
+    
+    .himclean-wrapper {
+        padding: 40px 25px;
+        border-radius: 24px;
+        overflow: visible !important;
+    }
+    
+    .himclean-title {
+        font-size: 2.2rem;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+    }
+    
+    .himclean-new-badge {
+        height: 46px !important;
+    }
+    
+    .himclean-header {
+        margin-bottom: 35px;
+    }
+    
+    .himclean-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .himclean-grid .himclean-item:last-child {
+        max-width: none;
+    }
+    
+    /* Сброс стилей центрального элемента на мобильной версии */
+    .himclean-item-center {
+        grid-column: 1;
+        justify-self: stretch;
+        transform: scale(1);
+    }
+    
+    .himclean-image {
+        border-radius: 20px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .himclean-tile {
+        border-radius: 20px !important;
+        padding: 20px !important;
+        margin-top: 0 !important;
+        overflow: visible !important;
+    }
+    
+    .himclean-item .himclean-tile {
+        border-radius: 20px !important;
+        overflow: visible !important;
+    }
+    
+    .himclean-item {
+        overflow: visible !important;
+    }
+    
+    .himclean-item-center .himclean-image {
+        border-radius: 20px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .himclean-item-center .himclean-tile {
+        border-radius: 20px !important;
+        padding: 20px !important;
+        margin-top: 0 !important;
+    }
+    
+    .himclean-item-center .himclean-tile h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .himclean-item-center .himclean-tile p {
+        font-size: 0.95rem !important;
+    }
+    
+    .himclean-item-center .himclean-button {
+        padding: 12px 28px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .himclean-tile h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .himclean-tile p {
+        font-size: 0.95rem !important;
+    }
+    
+    .himclean-button {
+        padding: 12px 28px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .himclean-button-wrapper {
+        gap: 10px;
+    }
+    
+    .himclean-discount-badge {
+        font-size: 1.1rem !important;
+        padding: 10px 16px !important;
+    }
+    
+    /* Smaller bubbles on mobile */
+    .himclean-bubble:nth-child(1) { width: 60px; height: 60px; }
+    .himclean-bubble:nth-child(2) { width: 40px; height: 40px; }
+    .himclean-bubble:nth-child(3) { width: 30px; height: 30px; }
+    .himclean-bubble:nth-child(4) { width: 50px; height: 50px; }
+    .himclean-bubble:nth-child(5) { width: 25px; height: 25px; }
+    .himclean-bubble:nth-child(6) { width: 45px; height: 45px; }
+    .himclean-bubble:nth-child(7) { width: 35px; height: 35px; }
+    .himclean-bubble:nth-child(8) { width: 28px; height: 28px; }
+    .himclean-bubble:nth-child(9) { width: 32px; height: 32px; }
+    .himclean-bubble:nth-child(10) { width: 42px; height: 42px; }
+    .himclean-bubble:nth-child(11) { width: 22px; height: 22px; }
+    .himclean-bubble:nth-child(12) { width: 48px; height: 48px; }
 }
 
-.dry-cleaning-card {
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.dry-cleaning-card:hover .dry-cleaning-content {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(26, 94, 26, 0.12);
-    border-color: #4CAF50;
-}
-
-.dry-cleaning-image {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    flex-shrink: 0;
-}
-
-.dry-cleaning-img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 16px;
-    transition: transform 0.3s ease;
-    display: block;
-}
-
-.dry-cleaning-card:hover .dry-cleaning-img {
-    transform: scale(1.05);
-}
-
-.dry-cleaning-content {
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 20px;
-    padding: 25px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(159, 220, 124, 0.1);
-    transition: all 0.3s ease;
-}
-
-.dry-cleaning-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #2d5a3d;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: left;
-}
-
-.dry-cleaning-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-    text-align: left;
-}
-
-.dry-cleaning-features li {
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, rgba(159, 220, 124, 0.1), rgba(200, 230, 160, 0.05));
-    border-left: 3px solid #4CAF50;
-    border-radius: 8px;
-    color: #2d5a3d;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.dry-cleaning-features li:hover {
-    background: linear-gradient(135deg, rgba(159, 220, 124, 0.2), rgba(200, 230, 160, 0.1));
-    transform: translateX(5px);
-    border-left-color: #388E3C;
-}
-
-.dry-cleaning-button-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: auto;
-}
-
-.dry-cleaning-button {
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    color: #2d5a3d;
-    border: none;
-    padding: 12px 20px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    border-radius: 18px;
-    cursor: pointer;
-    flex: 1;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
-    white-space: nowrap;
-    position: relative;
-    transform: translateY(0px);
-    box-shadow: 
-        0 6px 0 #4a7c59,
-        0 8px 15px rgba(74, 124, 89, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9),
-        0 0 20px rgba(74, 124, 89, 0.2);
-}
-
-.dry-cleaning-button:hover {
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    transform: translateY(-2px);
-    box-shadow: 
-        0 8px 0 #4a7c59,
-        0 12px 25px rgba(74, 124, 89, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 1),
-        0 0 30px rgba(74, 124, 89, 0.3);
-}
-
-.dry-cleaning-button:active {
-    transform: translateY(2px);
-    box-shadow: 
-        0 2px 0 #4a7c59,
-        0 4px 8px rgba(74, 124, 89, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 0 15px rgba(74, 124, 89, 0.1);
-}
-
-/* WhatsApp Icon Styles (matching services) */
-.package-whatsapp-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    margin-top: 12px;
-}
-
-.package-whatsapp-icon:hover {
-    transform: scale(1.1);
-}
-
-.package-whatsapp-icon img {
-    width: 64px;
-    height: 64px;
-}
-
-/* Mobile Responsive */
 @media (max-width: 480px) {
-    .dry-cleaning {
+    .himclean-section {
         padding: 40px 0;
     }
     
-    .dry-cleaning-card .dry-cleaning-title {
+    .himclean-wrapper {
+        padding: 30px 18px;
+        border-radius: 20px;
+    }
+    
+    .himclean-title {
+        font-size: 1.9rem;
+        letter-spacing: 2px;
+    }
+    
+    .himclean-new-badge {
+        height: 42px !important;
+    }
+    
+    .himclean-image {
+        aspect-ratio: 4 / 3;
+        border-radius: 16px 16px 0 0;
+    }
+    
+    .himclean-tile {
+        border-radius: 0 0 16px 16px;
+        padding: 18px 15px;
+    }
+    
+    .himclean-tile h3 {
         font-size: 1.1rem;
     }
     
-    .dry-cleaning-features li {
-        font-size: 0.85rem;
-        padding: 8px 12px;
+    .himclean-tile p {
+        font-size: 0.88rem;
     }
     
-    .dry-cleaning-button {
-        font-size: 0.8rem;
-        padding: 10px 16px;
+    .himclean-button {
+        padding: 11px 24px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+    }
+    
+    .himclean-button-wrapper {
+        gap: 8px;
+    }
+    
+    .himclean-discount-badge {
+        font-size: 1rem !important;
+        padding: 9px 14px !important;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .himclean-bubble {
+        animation: none;
+        opacity: 0.5;
+    }
+    
+    .himclean-new-badge {
+        animation: none;
+    }
+    
+    .himclean-item,
+    .himclean-button,
+    .himclean-image {
+        transition: none;
     }
 }
