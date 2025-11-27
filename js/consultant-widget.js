@@ -165,7 +165,7 @@ class ConsultantWidget {
     
     openConsultation() {
         // WhatsApp integration with predefined message
-        const phoneNumber = "77470969648"; // Основной номер WhatsApp компании
+        const phoneNumber = "77470399698"; // Основной номер WhatsApp компании
         const message = encodeURIComponent("Добрый день! Хочу продолжить консультацию по уборке");
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
         
