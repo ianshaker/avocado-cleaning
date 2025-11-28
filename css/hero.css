@@ -4,6 +4,11 @@
     background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--primary-light) 100%);
     padding: 0 0 80px;
     margin: 0;
+    overflow: visible;
+    border-radius: 0 0 30px 30px;
+}
+
+.hero .container {
     overflow: hidden;
     border-radius: 0 0 30px 30px;
 }
@@ -439,106 +444,121 @@
     height: 100%;
     top: 0;
     left: 0;
-    overflow: hidden;
+    overflow: visible;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
 }
 
 .floating-icon {
     position: absolute;
-    bottom: -150px;
-    opacity: 0.18;
+    opacity: 0.3;
     animation: riseIcon 20s infinite ease-in;
+    display: block !important;
+    visibility: visible !important;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
 }
 
 .icon-1 {
     width: 70px;
-    left: 8%;
-    animation-duration: 18s;
-    animation-delay: 0s;
+    left: 5%;
+    bottom: -100px;
+    animation-duration: 12s; /* Быстрая скорость - будет выше */
+    animation-delay: 0s; /* Партия 1 */
 }
 
 .icon-2 {
     width: 60px;
-    left: 22%;
-    animation-duration: 22s;
-    animation-delay: 0.5s;
+    left: 25%;
+    bottom: -100px;
+    animation-duration: 18s; /* Медленная скорость - будет ниже */
+    animation-delay: 0.3s; /* Партия 1 */
 }
 
 .icon-3 {
     width: 80px;
-    left: 38%;
-    animation-duration: 20s;
-    animation-delay: 0.3s;
+    left: 50%;
+    bottom: -100px;
+    animation-duration: 14s; /* Средняя скорость */
+    animation-delay: 0.6s; /* Партия 1 */
 }
 
 .icon-4 {
     width: 55px;
-    left: 52%;
-    animation-duration: 19s;
-    animation-delay: 0.8s;
+    left: 75%;
+    bottom: -100px;
+    animation-duration: 16s; /* Средне-медленная скорость */
+    animation-delay: 0.9s; /* Партия 1 */
 }
 
 .icon-5 {
     width: 65px;
-    left: 68%;
-    animation-duration: 21s;
-    animation-delay: 0.2s;
+    left: 15%;
+    bottom: -100px;
+    animation-duration: 13s; /* Средне-быстрая скорость */
+    animation-delay: 5s; /* Партия 2 - большая задержка */
 }
 
 .icon-6 {
     width: 75px;
-    left: 80%;
-    animation-duration: 23s;
-    animation-delay: 1s;
+    left: 40%;
+    bottom: -100px;
+    animation-duration: 17s; /* Медленная скорость - будет ниже */
+    animation-delay: 5.4s; /* Партия 2 */
 }
 
 .icon-7 {
     width: 70px;
-    left: 15%;
-    animation-duration: 24s;
-    animation-delay: 1.2s;
+    left: 65%;
+    bottom: -100px;
+    animation-duration: 15s; /* Средняя скорость */
+    animation-delay: 5.8s; /* Партия 2 */
 }
 
 .icon-8 {
     width: 58px;
-    left: 45%;
-    animation-duration: 19s;
-    animation-delay: 0.6s;
+    left: 85%;
+    bottom: -100px;
+    animation-duration: 19s; /* Очень медленная скорость - будет ниже всех */
+    animation-delay: 6.2s; /* Партия 2 */
 }
 
 .icon-9 {
     width: 68px;
-    left: 62%;
-    animation-duration: 22s;
-    animation-delay: 1.5s;
+    left: 30%;
+    bottom: -100px;
+    animation-duration: 11s; /* Очень быстрая скорость - будет выше всех */
+    animation-delay: 10s; /* Партия 3 - еще большая задержка */
 }
 
 .icon-10 {
     width: 72px;
-    left: 90%;
-    animation-duration: 20s;
-    animation-delay: 0.9s;
+    left: 60%;
+    bottom: -100px;
+    animation-duration: 20s; /* Самая медленная скорость - будет ниже всех */
+    animation-delay: 10.5s; /* Партия 3 */
 }
 
 @keyframes riseIcon {
     0% {
-        bottom: -150px;
+        bottom: -100px;
         opacity: 0;
         transform: translateX(0) rotate(0deg);
     }
     10% {
-        opacity: 0.18;
+        opacity: 0.3;
     }
     90% {
-        opacity: 0.18;
+        opacity: 0.3;
     }
     100% {
         bottom: 110%;
         opacity: 0;
-        transform: translateX(50px) rotate(180deg);
+        transform: translateX(60px) rotate(360deg);
     }
 }
+
 
 /* Bubbles Animation */
 .bubbles-container {
@@ -738,7 +758,7 @@
     }
 
     .floating-icon {
-        opacity: 0.15;
+        opacity: 0.25;
     }
 
     .icon-1, .icon-5, .icon-9 {

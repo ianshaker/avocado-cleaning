@@ -70,12 +70,23 @@ img.lazy-error {
 .footer-logo,
 .floating-logo,
 .trust-card-icon,
-.social-icon img,
-.floating-icon {
+.social-icon img {
     /* Эти изображения не будут иметь ленивую загрузку */
     opacity: 1 !important;
     background: none !important;
     animation: none !important;
+}
+
+/* Исключаем .floating-icon из hero секции - им нужна анимация подъема */
+.hero .floating-icon {
+    animation-name: riseIcon !important;
+    animation-iteration-count: infinite !important;
+    animation-timing-function: ease-in !important;
+    /* animation-duration не указываем здесь - используется из индивидуальных классов .icon-1, .icon-2 и т.д. */
+    opacity: 0.3 !important;
+    display: block !important;
+    visibility: visible !important;
+    z-index: 2 !important;
 }
 
 /* Адаптивные стили */

@@ -96,13 +96,19 @@ html {
 
 /* Отключение анимаций для пользователей с настройкой reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *:not(.hero .floating-icon),
+    *:not(.hero .floating-icon)::before,
+    *:not(.hero .floating-icon)::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+    
+    /* Иконки должны анимироваться всегда */
+    .hero .floating-icon {
+        /* animation-duration не указываем здесь - используется из индивидуальных классов .icon-1, .icon-2 и т.д. */
+        animation-iteration-count: infinite !important;
     }
 }
 

@@ -482,13 +482,15 @@
     overflow: hidden;
     pointer-events: none;
     z-index: 1;
+    display: none !important;
 }
 
 .services-floating-icon {
     position: absolute;
     bottom: -100px;
     opacity: 0.15;
-    animation: servicesRiseIcon 25s infinite ease-in;
+    animation: none !important;
+    display: none !important;
 }
 
 .services-icon-1 {
@@ -562,6 +564,7 @@
     overflow: hidden;
     pointer-events: none;
     z-index: 1;
+    display: none !important;
 }
 
 .services-bubble {
@@ -570,7 +573,8 @@
     background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
     border-radius: 50%;
     opacity: 0.4;
-    animation: servicesRise 15s infinite ease-in;
+    animation: none !important;
+    display: none !important;
 }
 
 .services-bubble:nth-child(1) {

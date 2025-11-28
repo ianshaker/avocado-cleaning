@@ -288,9 +288,7 @@ class SlotSelection {
                 const discount = isFree ? discountMap[dayIdx] : 0;
                 rowStates.push({
                     status: isFree ? 'available' : 'limited',
-                    avatars: isFree ? 2 : 1,
-                    plus: isFree,
-                    label: isFree ? 'Много' : 'Мало',
+                    avatars: isFree ? 3 : 1,
                     discount,
                     timeIdx
                 });
@@ -335,18 +333,17 @@ class SlotSelection {
 
     computeOccupancy(dayNum, timeIdx) {
         const r = this.prng(dayNum * 10 + timeIdx * 7);
-        let status, avatars, plus, label;
+        let status, avatars, plus;
         if (r < 0.2) {
-            status = 'limited'; avatars = 1; plus = false; label = 'Мало';
+            status = 'limited'; avatars = 1; plus = false;
         } else if (r < 0.45) {
-            status = 'limited'; avatars = 1; plus = false; label = 'Мало';
+            status = 'limited'; avatars = 1; plus = false;
         } else if (r < 0.8) {
-            status = 'available'; avatars = 2; plus = true; label = 'Много';
+            status = 'available'; avatars = 2; plus = true;
         } else {
-            status = 'available'; avatars = 2; plus = true; label = 'Много';
+            status = 'available'; avatars = 2; plus = true;
         }
-        console.log('SlotSelection: Новый label =', label); // Отладка
-        return { status, avatars, plus, label };
+        return { status, avatars, plus };
     }
 
     renderSlotOccupancy(slot, state) {
@@ -390,25 +387,21 @@ class SlotSelection {
             av.setAttribute('aria-hidden','true');
             avatarsWrap.appendChild(av);
         }
-        if (state.plus) {
-            const plus = document.createElement('div');
-            plus.className = 'avatar plus';
-            plus.textContent = '+';
-            plus.setAttribute('aria-label','Много');
-            avatarsWrap.appendChild(plus);
-        }
         slot.appendChild(avatarsWrap);
-    
-        const badge = document.createElement('span');
-    badge.className = 'slot-badge';
-    badge.textContent = state.label;
-    slot.appendChild(badge);
 
     // Подпись для ограниченных слотов
     if (state.status === 'limited') {
         const note = document.createElement('div');
         note.className = 'slot-note';
         note.textContent = 'Под запрос';
+        slot.appendChild(note);
+    }
+
+    // Подпись для доступных слотов
+    if (state.status === 'available') {
+        const note = document.createElement('div');
+        note.className = 'slot-note slot-note-available';
+        note.textContent = 'Есть слоты';
         slot.appendChild(note);
     }
 
