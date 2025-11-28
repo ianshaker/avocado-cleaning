@@ -320,8 +320,8 @@ class AnimationsManager {
             // Отключаем анимации для пользователей с настройкой "reduce motion"
             document.body.classList.add('reduced-motion');
             
-            // Отключаем анимированные элементы
-            const animatedElements = document.querySelectorAll('.bubbles, .floating-logo, .floating-icon');
+            // Отключаем анимированные элементы (кроме floating-icon в hero)
+            const animatedElements = document.querySelectorAll('.bubbles, .floating-logo');
             animatedElements.forEach(element => {
                 element.style.animation = 'none';
                 element.style.transform = 'none';

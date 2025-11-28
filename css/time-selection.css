@@ -31,13 +31,14 @@
 
 .time-header {
     padding: 8px 12px;
-    background: linear-gradient(145deg, var(--primary-light), var(--primary-medium));
+    background: transparent;
+    border: none;
     border-radius: 15px;
     font-size: 0.75rem;
     font-weight: 700;
-    color: white;
+    color: var(--primary-medium);
     text-align: center;
-    box-shadow: 0 2px 6px rgba(26, 94, 26, 0.15);
+    box-shadow: none;
 }
 
 /* Schedule Row */
@@ -70,18 +71,20 @@
     font-weight: 700;
     line-height: 1;
     margin-bottom: 1px;
+    color: var(--primary-medium);
 }
 
 .date-month {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     font-weight: 500;
     line-height: 1;
-    opacity: 0.8;
+    color: var(--primary-medium);
+    opacity: 0.9;
 }
 
 /* Time Slots */
 .time-slot {
-    padding: 28px 16px;
+    padding: 20px 16px 28px 16px;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.9));
     border: 2px solid rgba(159, 220, 124, 0.3);
     border-radius: 15px;
@@ -97,29 +100,14 @@
     justify-content: center;
     user-select: none;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 2px 8px rgba(26, 94, 26, 0.08);
-}
-
-.time-slot::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(159, 220, 124, 0.3), transparent);
-    transition: left 0.5s ease;
-}
-
-.time-slot:hover::before {
-    left: 100%;
 }
 
 .time-slot:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(26, 94, 26, 0.18);
-    border-color: rgba(159, 220, 124, 0.6);
+    border-color: rgba(159, 220, 124, 0.8);
 }
 
 .time-slot.selected {
@@ -131,8 +119,8 @@
 
 /* Специальный алый фон для выделенного слота с 25% скидкой */
 .time-slot.selected[data-discount="25"] {
-    background: linear-gradient(145deg, #ff6b6b, #e74c3c);
-    border-color: #c0392b;
+    background: linear-gradient(145deg, #fff5f5, #ffebeb);
+    border-color: #ffe0e0;
     color: #ffffff;
     font-weight: 700;
 }
@@ -147,12 +135,18 @@
 /* Hero Slot Occupancy */
 .hero .selection-wrapper .time-slot {
     position: relative;
+    overflow: visible;
+}
+
+.hero .selection-wrapper .time-slot:hover {
+    border-color: rgba(159, 220, 124, 0.8);
 }
 
 .hero .selection-wrapper .slot-avatars {
     position: absolute;
     top: 6px;
-    left: 6px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 0;
@@ -160,8 +154,8 @@
 }
 
 .hero .selection-wrapper .slot-avatars .avatar {
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
@@ -170,17 +164,20 @@
 }
 
 .hero .selection-wrapper .slot-avatars .avatar + .avatar {
-    margin-left: -8px; /* лёгкое перекрытие кружков */
+    margin-left: -10px; /* лёгкое перекрытие кружков */
 }
 
 .hero .selection-wrapper .slot-avatars .avatar.plus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary-medium);
-    color: #fff;
+    background: transparent;
+    color: var(--primary-medium);
     font-weight: 800;
     font-size: 0.85rem;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px !important; /* отступ справа от аватаров, без наложения */
 }
 
 .hero .selection-wrapper .slot-badge {
@@ -198,26 +195,32 @@
     z-index: 1;
 }
 
-/* Бейдж скидки в слотах героя */
+/* Бейдж скидки в слотах героя - стиль как уведомления iOS */
 .hero .selection-wrapper .slot-discount {
     position: absolute;
-    bottom: 6px;
-    right: 6px;
-    padding: 3px 6px;
-    border-radius: 12px;
-    font-size: 0.7rem;
+    top: -6px;
+    right: -6px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    font-size: 0.65rem;
     font-weight: 800;
-    letter-spacing: 0.2px;
+    letter-spacing: 0;
     background: linear-gradient(135deg, #ff4757, #ff3742); /* базовый алый как fallback */
     color: #fff;
-    box-shadow: 0 2px 6px rgba(255, 71, 87, 0.3);
-    z-index: 1;
+    box-shadow: 0 2px 4px rgba(255, 71, 87, 0.4);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 /* Оранжевый для 10% */
 .hero .selection-wrapper .time-slot[data-discount="10"] .slot-discount {
     background: linear-gradient(135deg, #ff9f43, #ff7f11);
-    box-shadow: 0 2px 6px rgba(255, 159, 67, 0.3);
+    box-shadow: 0 2px 4px rgba(255, 159, 67, 0.4);
 }
 
 
@@ -225,10 +228,11 @@
 /* Алый для 25% */
 .hero .selection-wrapper .time-slot[data-discount="25"] .slot-discount {
     background: linear-gradient(135deg, #ff4757, #ff3742);
-    box-shadow: 0 2px 6px rgba(255, 71, 87, 0.3);
+    box-shadow: 0 2px 4px rgba(255, 71, 87, 0.4);
 }
 .hero .selection-wrapper .time-slot.available:not([data-discount]) .slot-discount {
     background: linear-gradient(135deg, #ff4757, #ff3742);
+    box-shadow: 0 2px 4px rgba(255, 71, 87, 0.4);
 }
 
 .hero .selection-wrapper .time-slot.available .slot-badge {
@@ -272,6 +276,19 @@
     opacity: 0.95;
 }
 
+/* Подпись в доступных слотах */
+.hero .selection-wrapper .time-slot.available .slot-note-available {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    right: 8px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #256b29; /* в тон бейджу доступных слотов */
+    opacity: 0.95;
+}
+
 /* Мобильные стили */
 @media (max-width: 768px) {
     .hero .selection-wrapper .slot-badge {
@@ -281,12 +298,18 @@
     }
     
     .hero .selection-wrapper .slot-discount {
-        font-size: 0.6rem;
-        padding: 2px 5px;
-        border-radius: 10px;
+        font-size: 0.55rem;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 5px;
+        border-radius: 9px;
     }
     
     .hero .selection-wrapper .time-slot.limited .slot-note {
+        font-size: 0.6rem;
+    }
+    
+    .hero .selection-wrapper .time-slot.available .slot-note-available {
         font-size: 0.6rem;
     }
 }
@@ -299,8 +322,10 @@
     }
     
     .hero .selection-wrapper .slot-discount {
-        font-size: 0.55rem;
-        padding: 2px 4px;
+        font-size: 0.5rem;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
         border-radius: 8px;
     }
     
