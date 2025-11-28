@@ -48,18 +48,17 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, #ff4757, #ff3742);
+    background: rgba(100, 100, 100, 0.85);
     color: white;
     padding: 10px 15px;
     border-radius: 25px;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
     z-index: 10;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-    animation: pulse-discount 2s infinite;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     text-align: center;
     line-height: 1.2;
@@ -82,62 +81,26 @@
 }
 
 .discount-badge::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #ff6b7a, #ff4757, #ff3742);
-    border-radius: 22px;
-    z-index: -1;
-    opacity: 0.7;
-    animation: glow-discount 2s infinite alternate;
+    display: none;
 }
 
-@keyframes pulse-discount {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
-    }
-}
-
-@keyframes glow-discount {
-    0% {
-        opacity: 0.7;
-        filter: blur(2px);
-    }
-    100% {
-        opacity: 0.9;
-        filter: blur(4px);
-    }
-}
 
 /* Priority Slots Badge */
 .priority-badge {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    background: rgba(100, 100, 100, 0.85);
     color: white;
     padding: 10px 15px;
     border-radius: 25px;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
     z-index: 10;
-    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
-    animation: pulse-priority 2s infinite;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     text-align: center;
     line-height: 1.2;
@@ -160,44 +123,9 @@
 }
 
 .priority-badge::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #a569bd, #8e44ad, #7d3c98);
-    border-radius: 22px;
-    z-index: -1;
-    opacity: 0.7;
-    animation: glow-priority 2s infinite alternate;
+    display: none;
 }
 
-@keyframes pulse-priority {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(142, 68, 173, 0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
-    }
-}
-
-@keyframes glow-priority {
-    0% {
-        opacity: 0.7;
-        filter: blur(2px);
-    }
-    100% {
-        opacity: 0.9;
-        filter: blur(4px);
-    }
-}
 
 /* Special Offer Badge */
 .special-badge {
@@ -242,18 +170,17 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: rgba(100, 100, 100, 0.85);
     color: white;
     padding: 8px 16px;
     border-radius: 25px;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
     z-index: 10;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-    animation: pulse-gift 2s infinite;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     text-align: center;
     line-height: 1.2;
@@ -276,44 +203,9 @@
 }
 
 .gift-badge::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #34d399, #10b981, #059669);
-    border-radius: 22px;
-    z-index: -1;
-    opacity: 0.7;
-    animation: glow-gift 2s infinite alternate;
+    display: none;
 }
 
-@keyframes pulse-gift {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-    }
-}
-
-@keyframes glow-gift {
-    0% {
-        opacity: 0.7;
-        filter: blur(2px);
-    }
-    100% {
-        opacity: 0.9;
-        filter: blur(4px);
-    }
-}
 
 /* Стили для контейнера кнопок и иконок */
 .package-button-container {
@@ -397,8 +289,8 @@
 }
 
 .package-whatsapp-icon img {
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
 }
 
 
@@ -566,6 +458,18 @@
     background: linear-gradient(135deg, rgba(159, 220, 124, 0.2), rgba(200, 230, 160, 0.1));
     transform: translateX(5px);
     border-left-color: var(--primary-medium);
+}
+
+.package-features li.feature-highlight {
+    background: linear-gradient(135deg, rgba(159, 220, 124, 0.15), rgba(200, 230, 160, 0.1));
+    border-left-width: 4px;
+    font-weight: 600;
+    position: relative;
+}
+
+.package-features li.feature-highlight::before {
+    content: '⭐';
+    margin-right: 6px;
 }
 
 /* Floating Elements for Services */

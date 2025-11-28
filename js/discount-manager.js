@@ -93,40 +93,42 @@ class DiscountManager {
      * Расчет скидки
      */
     calculateDiscount() {
-        let discount = this.baseDiscount;
+        let discount = this.baseDiscount; // Базовая скидка 3% при выборе типа жилья
         const breakdown = [
             { label: 'Базовая скидка:', value: '3%' }
         ];
 
-        // Проверяем тип помещения
+        // Тип помещения - базовая скидка уже учтена (3%)
         const propertyType = this.getSelectedPropertyType();
-        if (propertyType === 'apartment' || propertyType === 'house') {
-            discount += 7; // +7% для квартиры/дома (итого 10%)
-            breakdown.push({ label: 'Квартира/Дом:', value: '+7%' });
+        if (!propertyType) {
+            // Если тип помещения не выбран, скидка = 0
+            discount = 0;
+            breakdown[0] = { label: 'Базовая скидка:', value: '0%' };
         }
 
         // Проверяем тип уборки
         const cleaningType = this.getSelectedCleaningType();
-        if (cleaningType === 'general') {
-            // Для генеральной уборки - добавляем 10%
-            discount += 10;
-            breakdown.push({ label: 'Генеральная уборка:', value: '+10%' });
+        if (cleaningType === 'maintenance') {
+            // Для поддерживающей уборки - добавляем 3% (итого 6%)
+            discount += 3;
+            breakdown.push({ label: 'Поддерживающая уборка:', value: '+3%' });
+        } else if (cleaningType === 'general') {
+            // Для генеральной уборки - добавляем 4% (итого 7%)
+            discount += 4;
+            breakdown.push({ label: 'Генеральная уборка:', value: '+4%' });
         } else if (cleaningType === 'post-renovation') {
-            // Для уборки после ремонта - добавляем 10%
-            discount += 10;
-            breakdown.push({ label: 'После ремонта:', value: '+10%' });
+            // Для уборки после ремонта - добавляем 4% (итого 7%)
+            discount += 4;
+            breakdown.push({ label: 'После ремонта:', value: '+4%' });
         } else if (cleaningType === 'other') {
-            // Для "другое" - сброс до базовой
-            discount = this.baseDiscount;
-            // Убираем все бонусы кроме базовой
-            breakdown.splice(1);
+            // Для "другое" - остается только базовая скидка
+            // Ничего не добавляем
         }
-        // Для поддерживающей - без изменений
 
-        // Добавляем бонус за дополнительные услуги
+        // Добавляем бонус за дополнительные услуги - по 1% за каждую
         const servicesCount = this.getSelectedServicesCount();
         if (servicesCount > 0) {
-            const servicesBonus = servicesCount * 2;
+            const servicesBonus = servicesCount * 1; // +1% за каждую услугу
             discount += servicesBonus;
             breakdown.push({ 
                 label: `Доп. услуги (${servicesCount}):`, 
