@@ -12,7 +12,7 @@
 .himclean-wrapper {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     border-radius: 32px;
-    padding: 60px 50px;
+    padding: 50px 40px;
     position: relative;
     overflow: hidden;
     box-shadow: 
@@ -262,40 +262,141 @@
 .himclean-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
     position: relative;
     z-index: 2;
 }
 
-/* Центрирование и увеличение центрального элемента (шторы) */
+/* Carousel wrapper - на десктопе не влияет на grid */
+.himclean-carousel-wrapper {
+    display: contents; /* На десктопе wrapper "исчезает", элементы ведут себя как прямые дети grid */
+}
+
+/* На десктопе все слайды видны */
+.himclean-slide {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Navigation arrows */
+.himclean-carousel-prev,
+.himclean-carousel-next {
+    display: none; /* Скрыты на десктопе */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.himclean-carousel-prev {
+    left: 10px;
+}
+
+.himclean-carousel-next {
+    right: 10px;
+}
+
+/* На мобильной версии стрелки позиционируются относительно wrapper */
+@media (max-width: 768px) {
+    .himclean-carousel-prev {
+        left: 10px;
+    }
+    
+    .himclean-carousel-next {
+        right: 10px;
+    }
+}
+
+.himclean-carousel-prev:hover,
+.himclean-carousel-next:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(159, 220, 124, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.himclean-carousel-prev:active,
+.himclean-carousel-next:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Dots indicators */
+.himclean-carousel-dots {
+    display: none; /* Скрыты на десктопе */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    grid-column: 1 / -1;
+}
+
+.himclean-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin: 0;
+}
+
+.himclean-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.himclean-dot.active {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(159, 220, 124, 0.6);
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 10px rgba(159, 220, 124, 0.4);
+}
+
+/* Центрирование центрального элемента (шторы) */
 .himclean-item-center {
     grid-column: 2;
     justify-self: center;
-    transform: scale(1.1);
     z-index: 3;
 }
 
 .himclean-item-center .himclean-image {
-    border-radius: 28px;
-    margin-bottom: 20px;
+    border-radius: 24px;
+    margin-bottom: 15px;
 }
 
 .himclean-item-center .himclean-tile {
-    border-radius: 28px;
-    padding: 40px 30px 30px;
+    border-radius: 24px;
+    padding: 35px 25px 25px;
 }
 
 .himclean-item-center .himclean-tile h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .himclean-item-center .himclean-tile p {
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .himclean-item-center .himclean-button {
-    padding: 16px 40px;
-    font-size: 1rem;
+    padding: 14px 35px;
+    font-size: 0.95rem;
 }
 
 /* ============================================
@@ -313,13 +414,14 @@
    ============================================ */
 .himclean-image {
     width: 100%;
+    max-width: 85%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 24px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: none;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .himclean-item:hover .himclean-image {
@@ -504,7 +606,7 @@
         font-size: 2.2rem;
         flex-direction: row;
         gap: 12px;
-        align-items: center;
+    align-items: center;
     }
     
     .himclean-new-badge {
@@ -518,10 +620,65 @@
     .himclean-grid {
         grid-template-columns: 1fr;
         gap: 25px;
+        position: relative;
     }
     
     .himclean-grid .himclean-item:last-child {
         max-width: none;
+    }
+    
+    /* Carousel на мобильной версии */
+    .himclean-carousel-wrapper {
+        display: block !important;
+        grid-template-columns: 1fr !important;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        min-height: 400px; /* Минимальная высота для правильного позиционирования стрелок */
+    }
+    
+    /* Скрываем все слайды кроме активного на мобильной версии */
+    .himclean-slide {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .himclean-slide.active {
+        display: flex !important;
+    }
+    
+    /* Убираем grid-column для слайдов на мобильной версии */
+    .himclean-item-center {
+        grid-column: 1 !important;
+    }
+    
+    /* Показываем стрелки на мобильной версии */
+    .himclean-carousel-prev,
+    .himclean-carousel-next {
+        display: flex !important;
+        position: absolute;
+        top: 50%;
+        z-index: 15;
+    }
+    
+    .himclean-carousel-prev {
+        left: 20px;
+    }
+    
+    .himclean-carousel-next {
+        right: 20px;
+    }
+    
+    /* Показываем точки на мобильной версии */
+    .himclean-carousel-dots {
+        display: flex !important;
+        margin-top: 20px;
+    }
+    
+    /* Позиционирование стрелок относительно grid на мобильной версии */
+    .himclean-grid {
+        position: relative;
     }
     
     /* Сброс стилей центрального элемента на мобильной версии */

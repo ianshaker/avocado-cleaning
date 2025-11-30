@@ -480,12 +480,15 @@ class FormsManager {
             submitButton.textContent = 'Отправляем...';
             submitButton.disabled = true;
 
+            // Получаем уникальный ID посетителя
+            const visitorId = window.VisitorTracker?.getVisitorId() || window.app?.visitorTracker?.getVisitorId() || null;
+
             // Отправляем в Telegram
             let telegramSuccess = false;
             try {
                 const telegramBot = window.TelegramBot;
                 if (telegramBot && telegramBot.isConfigured()) {
-                    telegramSuccess = await telegramBot.sendSlotBooking(selectedSlotData, phone, selectedCity);
+                    telegramSuccess = await telegramBot.sendSlotBooking(selectedSlotData, phone, selectedCity, visitorId);
                     if (telegramSuccess) {
                         console.log('✅ Заявка отправлена в Telegram');
                     } else {
@@ -603,12 +606,15 @@ class FormsManager {
             submitButton.textContent = 'Отправляем...';
             submitButton.disabled = true;
 
+            // Получаем уникальный ID посетителя
+            const visitorId = window.VisitorTracker?.getVisitorId() || window.app?.visitorTracker?.getVisitorId() || null;
+
             // Отправляем в Telegram
             let telegramSuccess = false;
             try {
                 const telegramBot = window.TelegramBot;
                 if (telegramBot && telegramBot.isConfigured()) {
-                    telegramSuccess = await telegramBot.sendCustomPackage(packageData);
+                    telegramSuccess = await telegramBot.sendCustomPackage(packageData, visitorId);
                 }
             } catch (error) {
                 console.error('Ошибка отправки в Telegram:', error);
