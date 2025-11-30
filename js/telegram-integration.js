@@ -16,9 +16,10 @@ class TelegramIntegration {
      * @param {Object} slotData - Данные о выбранном слоте
      * @param {string} phone - Номер телефона
      * @param {string} city - Выбранный город
+     * @param {string|null} visitorId - Уникальный ID посетителя
      * @returns {Promise<boolean>} - Успешность отправки
      */
-    async sendSlotBooking(slotData, phone, city) {
+    async sendSlotBooking(slotData, phone, city, visitorId = null) {
         try {
             const cityName = city === 'almaty' ? 'Алматы' : 'Астана';
             const currentTime = new Date().toLocaleString('ru-RU', {
@@ -32,15 +33,22 @@ class TelegramIntegration {
             }) + ' (GMT+6)';
 
             const formattedDate = this.formatDate(slotData.date);
-            const message = `🆕 <b>НОВАЯ ЗАЯВКА НА КЛИНИНГ</b>
+            
+            // Формируем сообщение с visitor ID, если он есть
+            let message = `🆕 <b>НОВАЯ ЗАЯВКА НА КЛИНИНГ</b>
 
 📍 <b>Город:</b> ${cityName}
 📅 <b>Дата:</b> ${formattedDate}
 ⏰ <b>Время:</b> ${slotData.time}
 📱 <b>Телефон:</b> <code>${phone}</code>
-💰 <b>Скидка:</b> ${slotData.discount}
+💰 <b>Скидка:</b> ${slotData.discount}`;
 
-🕐 <b>Время заявки:</b> ${currentTime}
+            // Добавляем visitor ID, если он передан
+            if (visitorId) {
+                message += `\n🆔 <b>ID посетителя:</b> <code>${visitorId}</code>`;
+            }
+
+            message += `\n\n🕐 <b>Время заявки:</b> ${currentTime}
 📝 <b>Источник:</b> Форма "Беру слот"`;
 
             const success = await this.sendMessage(message);
@@ -61,9 +69,10 @@ class TelegramIntegration {
     /**
      * Отправка данных формы "Свой пакет" в Telegram
      * @param {Object} packageData - Данные о пакете
+     * @param {string|null} visitorId - Уникальный ID посетителя
      * @returns {Promise<boolean>} - Успешность отправки
      */
-    async sendCustomPackage(packageData) {
+    async sendCustomPackage(packageData, visitorId = null) {
         try {
             const currentTime = new Date().toLocaleString('ru-RU', {
                 timeZone: 'Asia/Almaty',
@@ -99,15 +108,21 @@ class TelegramIntegration {
                 ? additionalServices.join(', ') 
                 : 'не выбраны';
 
-            const message = `📦 <b>ЗАЯВКА НА СВОЙ ПАКЕТ</b>
+            // Формируем сообщение с visitor ID, если он есть
+            let message = `📦 <b>ЗАЯВКА НА СВОЙ ПАКЕТ</b>
 
 📱 <b>Телефон:</b> <code>${packageData.phone}</code>
 📐 <b>Площадь:</b> ${packageData.area} кв.м
 🏢 <b>Тип недвижимости:</b> ${packageData.propertyType}
 🧹 <b>Тип уборки:</b> ${packageData.cleaningType}
-➕ <b>Дополнительные услуги:</b> ${additionalServicesText}
+➕ <b>Дополнительные услуги:</b> ${additionalServicesText}`;
 
-🕐 <b>Время заявки:</b> ${currentTime}
+            // Добавляем visitor ID, если он передан
+            if (visitorId) {
+                message += `\n🆔 <b>ID посетителя:</b> <code>${visitorId}</code>`;
+            }
+
+            message += `\n\n🕐 <b>Время заявки:</b> ${currentTime}
 📝 <b>Источник:</b> Форма "Свой пакет"`;
 
             const success = await this.sendMessage(message);
@@ -269,6 +284,7 @@ class TelegramIntegration {
         
         return await this.sendMessage(testMessage);
     }
+
 }
 
 // Создаем глобальный экземпляр

@@ -322,6 +322,16 @@ class App {
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new App();
     window.app.init();
+    
+    // Инициализируем отслеживание посетителей
+    if (window.VisitorTracker) {
+        window.VisitorTracker.init();
+    }
+    
+    // Инициализируем трекинг кнопок
+    if (window.ButtonTracker) {
+        window.ButtonTracker.init();
+    }
 });
 
 // Делаем класс App доступным глобально
